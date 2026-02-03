@@ -1,0 +1,985 @@
+{
+  "Index": {
+    "title": "MTUN Deans Council"
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About Us",
+    "staff": "Staff",
+    "research": "Research",
+    "industry": "Industry",
+    "collaboration": "Collaboration",
+    "facilities": "Facilities",
+    "news": "News",
+    "contact": "Contact",
+    "staffLogin": "Staff Login",
+    "portalLogin": "Staff Portal Login",
+    "staffPortal": "Staff Portal",
+    "portalName": "MTUN Portal"
+  },
+  "Auth": {
+    "login": {
+      "title": "MTUN Deans' System",
+      "titleAccent": "Deans' System",
+      "description": "Empowering academic excellence through seamless collaboration and data-driven leadership.",
+      "backToHome": "Back to Home",
+      "formTitle": "Staff Login",
+      "email": "Email Address",
+      "password": "Password",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot Password?",
+      "noAccount": "Don't have an account?",
+      "contactAdmin": "Contact Administrator",
+      "errorLogin": "Invalid email or password",
+      "successLogin": "Login successful",
+      "signInButton": "Sign In",
+      "loadingSystem": "Loading MTUN System..."
+    },
+    "forgotPassword": {
+      "title": "Forgot",
+      "titleAccent": "Password?",
+      "description": "Don't worry, it happens. Enter your email address and we'll send you a link to reset your password.",
+      "backToLogin": "Back to Login",
+      "formTitle": "Reset Password",
+      "formDescription": "We'll send a recovery link to your inbox.",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "name@university.edu",
+      "submit": "Send Reset Link",
+      "successTitle": "Check your email",
+      "successDescription": "We've sent a password reset link to {email}",
+      "returnToLogin": "Return to Login",
+      "toastSuccess": "Reset email sent!"
+    },
+    "newPassword": {
+      "title": "Secure",
+      "titleAccent": "Recovery",
+      "description": "Your security is our priority. Please choose a strong password that you haven't used before.",
+      "backToLogin": "Back to Login",
+      "formTitle": "New Password",
+      "formDescription": "Enter your new secure password below.",
+      "passwordLabel": "New Password",
+      "passwordPlaceholder": "Minimum 8 characters",
+      "confirmPasswordLabel": "Confirm New Password",
+      "confirmPasswordPlaceholder": "Repeat your new password",
+      "submit": "Reset Password",
+      "successTitle": "Success!",
+      "successDescription": "Your password has been successfully updated. You can now log in with your new credentials.",
+      "goToLogin": "Go to Login",
+      "errorToken": "Missing reset token. Please check your email link.",
+      "toastSuccess": "Password updated successfully!"
+    },
+    "changePassword": {
+      "title": "Security",
+      "titleAccent": "First",
+      "description": "To ensure your account remains secure, please update your temporary password before proceeding to the dashboard.",
+      "feature1": "Encrypted Data Protection",
+      "feature2": "Secure Session Management",
+      "formTitle": "Update Password",
+      "formDescription": "Create a strong password for your account.",
+      "passwordLabel": "New Password",
+      "passwordPlaceholder": "Minimum 8 characters",
+      "confirmPasswordLabel": "Confirm New Password",
+      "confirmPasswordPlaceholder": "Repeat your new password",
+      "submit": "Update Password",
+      "toastSuccess": "Password updated successfully!"
+    }
+  },
+  "Dashboard": {
+    "sidebar": {
+      "mainMenu": "Main Menu",
+      "system": "System",
+      "management": "Management",
+      "dashboard": "Dashboard",
+      "universities": "Universities",
+      "users": "User Management",
+      "logs": "System Logs",
+      "approvals": "Approvals",
+      "reports": "Reports",
+      "calendar": "Calendar",
+      "profile": "My Profile",
+      "settings": "Settings",
+      "myUniversity": "My University",
+      "meetings": "Meetings",
+      "staff": "Staff",
+      "research": "Research",
+      "industry": "Industry",
+      "facilities": "Facilities",
+      "news": "News",
+      "minutes": "Minutes",
+      "signOut": "Sign Out",
+      "systemName": "Deans' System"
+    },
+    "header": {
+      "searchPlaceholder": "Search anything...",
+    "notifications": "Notifications"
+  },
+  "Common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "logoutTitle": "Confirm Logout",
+    "logoutDesc": "Are you sure you want to sign out?",
+    "deleteTitle": "Confirm Deletion",
+    "deleteDesc": "Are you sure you want to delete this item? This action cannot be undone.",
+    "approveTitle": "Confirm Approval",
+    "approveDesc": "Are you sure you want to approve this item?",
+    "rejectTitle": "Confirm Rejection",
+    "rejectDesc": "Are you sure you want to reject this item?",
+    "deleteUserTitle": "Delete User",
+    "deleteUserDesc": "Are you sure you want to delete this user? This action cannot be undone, and the user will permanently lose access.",
+    "deleteUniTitle": "Delete University",
+    "deleteUniDesc": "Are you sure you want to delete this university? This action cannot be undone and may affect linked users and data.",
+    "notifications": "Notifications",
+    "noNotifications": "No new notifications",
+    "approved": "Approved",
+    "pending": "Pending",
+    "needsrevision": "Needs Revision",
+    "rejected": "Rejected",
+    "details": "Details",
+    "completed": "Completed"
+  },
+  "admin": {
+      "badge": "Admin Control Panel",
+      "title": "Dashboard Overview",
+      "welcome": "Welcome back, Super Admin. Here is what’s happening today.",
+      "stats": {
+        "totalUniversities": "Total Universities",
+        "totalUniversitiesDesc": "Registered MTUN members",
+        "totalUsers": "Total Users",
+        "totalUsersDesc": "System-wide accounts",
+        "activeStaff": "Active Staff",
+        "activeStaffDesc": "Data entry personnel",
+        "systemHealth": "System Health",
+        "systemHealthDesc": "Database Status",
+        "stable": "Stable",
+        "live": "Live",
+        "verified": "Verified",
+        "optimal": "Optimal",
+        "critical": "Critical",
+        "operational": "Operational"
+      },
+      "activity": {
+        "title": "Recent System Activity",
+        "description": "Real-time audit trail of system events",
+        "viewAll": "View All Logs",
+        "table": {
+          "user": "User Profile",
+          "role": "Role",
+          "university": "University",
+          "date": "Joined Date"
+        }
+      }
+    },
+    "dean": {
+      "welcome": "Welcome back,",
+      "today": "Today is",
+      "ctaReport": "View Executive Summary",
+      "university": {
+        "badge": "Executive Command Center",
+        "cta": "View Full Details",
+        "stats": {
+          "staff": "Staff",
+          "research": "Research",
+          "partners": "Partners",
+          "meetings": "Meetings"
+        }
+      },
+      "approvals": {
+        "title": "Pending Decisions",
+        "badge": "Waiting",
+        "viewAll": "View All",
+        "emptyTitle": "All caught up!",
+        "emptyDesc": "You have no pending decisions at the moment.",
+        "emptyBadge": "Time for a break"
+      },
+      "activity": {
+        "title": "Institutional Activity Overview",
+        "recentTitle": "Recent Activity"
+      },
+      "calendar": {
+        "scheduleFor": "Schedule for",
+        "today": "Today",
+        "noMeetings": "No meetings scheduled",
+        "viewFull": "View Full Calendar"
+      },
+      "dialog": {
+        "badge": "Decision Required",
+        "location": "Virtual Meeting",
+        "requestor": "Requestor",
+        "staffLabel": "Institutional Staff",
+        "agenda": "Agenda & Timeline",
+        "noDetails": "No additional details provided for this meeting request.",
+        "reject": "Reject Request",
+        "rejectShort": "Reject",
+        "approve": "Approve Meeting",
+        "approveShort": "Approve"
+      }
+    },
+    "dataEntry": {
+      "welcome": "Welcome back,",
+      "submitNewMeeting": "Submit New Meeting",
+      "stats": {
+        "totalSubmissions": {
+          "title": "Total Submissions"
+        },
+        "pendingApproval": {
+          "title": "Pending Approval"
+        },
+        "approved": {
+          "title": "Approved"
+        },
+        "needsRevision": {
+          "title": "Needs Revision / Rejected"
+        }
+      },
+      "recentActivity": {
+        "title": "My Recent Activity",
+        "viewAll": "View All"
+      },
+      "quickActions": {
+        "title": "Quick Actions",
+        "uploadMinutes": "Upload Minutes",
+        "editProfile": "Edit Profile"
+      },
+      "systemNotification": "System Notification",
+      "recentSubmissions": {
+        "title": "Recent Submissions",
+        "viewAll": "View All",
+        "table": {
+          "date": "Date",
+          "title": "Title",
+          "type": "Type",
+          "status": "Status",
+          "action": "Action",
+          "mock1Title": "MTUN Strategic Meeting Q1",
+          "mock1Type": "Meeting Minutes",
+          "mock2Title": "Research Collaboration Review",
+          "mock2Type": "Research Proposal",
+          "mock3Title": "Facility Usage Request - Lab 3",
+          "mock3Type": "Facility Request",
+          "mock4Title": "Grant Application - Renewable Energy",
+          "mock4Type": "Grant Application"
+        },
+        "empty": "No recent submissions found.",
+        "emptyDesc": "Start by submitting a new meeting request.",
+        "footer": "Showing recent items"
+      },
+      "upcomingDeadlines": {
+        "title": "Upcoming Deadlines",
+        "empty": "No upcoming deadlines.",
+        "emptyDesc": "You're all caught up!",
+        "submitAnnualReportData": "Submit Annual Report Data",
+        "annualPerformanceReview": "Annual Performance Review",
+        "researchGrantProposal": "Research Grant Proposal",
+        "daysRemaining": "{days} days remaining"
+      },
+      "quickTools": {
+        "title": "Quick Tools",
+        "uploadMinutes": "Upload Minutes",
+        "editProfile": "Edit Profile"
+      },
+      "systemUpdatedNotification": "System updated: Workspace V2 is live",
+      "heroDescription": "Ready to contribute? Track your submissions and manage university data efficiently from this workspace.",
+      "uploadMinutesButton": "Upload Minutes",
+      "viewMySubmissions": "View My Submissions"
+    },
+    "charts": {
+      "staffDist": "Staff Distribution",
+      "staffDistDesc": "Comparison by University",
+      "userRoles": "User Roles",
+      "userRolesDesc": "System access breakdown",
+      "actions": {
+        "refresh": "Refresh Data",
+        "export": "Export Data"
+      }
+    },
+    "report": {
+      "button": "Download Report",
+      "filename": "system_report",
+      "metrics": {
+        "metric": "Metric",
+        "value": "Value",
+        "totalUniversities": "Total Universities",
+        "totalUsers": "Total Users",
+        "activeStaff": "Active Staff",
+        "dbStatus": "Database Status",
+        "generatedAt": "Report Generated At"
+      }
+    },
+    "fallback": {
+      "welcome": "Welcome, {name}",
+      "description": "Your specialized dashboard is coming soon.",
+      "cta": "Explore System"
+    },
+    "logout": {
+      "title": "Confirm Logout",
+      "description": "Are you sure you want to sign out?",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    }
+  },
+  "Meetings": {
+    "list": {
+      "title": "Meeting Schedules",
+      "description": "Track and manage all MTUN university meetings.",
+      "ctaCreate": "Schedule Meeting",
+      "searchPlaceholder": "Search by topic, location, or university...",
+      "filterStatus": "All Status",
+      "statusPending": "Pending",
+      "statusApproved": "Approved",
+      "statusCompleted": "Completed",
+      "table": {
+        "topic": "Meeting Topic",
+        "schedule": "Schedule",
+        "location": "Location",
+        "university": "University",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete",
+        "uploadMinutes": "Upload Minutes",
+        "updateMinutes": "Update Minutes"
+      },
+      "deleteConfirm": "Are you sure you want to delete this meeting?",
+      "toastDeleteSuccess": "Meeting deleted successfully!",
+      "empty": "No meetings found.",
+      "online": "Online",
+      "virtual": "Virtual"
+    },
+    "calendar": {
+      "title": "Meeting Schedules",
+      "searchPlaceholder": "Search meetings...",
+      "filterStatus": "Filter by Status",
+      "filterUniversity": "Filter by University",
+      "allUniversities": "All Universities",
+      "allStatuses": "All Statuses",
+      "days": {
+        "sun": "Sun",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat"
+      }
+    },
+    "create": {
+      "title": "Schedule New Meeting",
+      "description": "Organize a new MTUN session and invite participants.",
+      "sections": {
+        "info": "Meeting Information",
+        "location": "Location & Format",
+        "participants": "Participants & Agenda",
+        "attachments": "Attachments"
+      },
+      "fields": {
+        "topic": "Meeting Topic",
+        "topicPlaceholder": "e.g. MTUN Quarterly Review 2024",
+        "date": "Date",
+        "startTime": "Start Time",
+        "endTime": "End Time",
+        "type": "Meeting Type",
+        "location": "Location / Room",
+        "locationPlaceholder": "e.g. Conference Room A",
+        "link": "Meeting Link",
+        "linkPlaceholder": "https://zoom.us/j/...",
+        "participants": "Invite Participants",
+        "participantsPlaceholder": "Search and select staff...",
+        "agenda": "Agenda Details",
+        "insertAgenda": "Insert Standard Agenda"
+      },
+      "dropzone": {
+        "title": "Click to upload or drag and drop",
+        "subtitle": "PDF or DOCX up to 5MB"
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "submit": "Schedule Meeting"
+      },
+      "toastSuccess": "Meeting scheduled successfully!"
+    },
+    "uploadMinutes": {
+      "title": "Upload Meeting Minutes",
+      "fields": {
+        "summary": "Minutes Summary *",
+        "summaryPlaceholder": "Enter a summary of the meeting minutes here...",
+        "file": "Meeting Minutes File (PDF, DOCX) *",
+        "filePlaceholder": "Drag 'n' drop your minutes file here, or click to select file",
+        "fileSubtitle": "(Max 5MB, PDF/DOCX only)",
+        "selectedFile": "Selected File:"
+      },
+      "actions": {
+        "submit": "Upload Minutes"
+      },
+      "errors": {
+        "noFile": "Please upload a meeting minutes file.",
+        "singleFile": "Only one file can be uploaded for minutes.",
+        "meetingNotFound": "Meeting Not Found",
+        "meetingNotFoundDesc": "The meeting you are trying to upload minutes for does not exist.",
+        "fetchError": "Error Fetching Meeting Details",
+        "fetchErrorDesc": "An error occurred while trying to retrieve meeting details."
+      },
+      "backToMinutesList": "Back to Minutes List",
+      "toastSuccess": "Meeting minutes uploaded successfully!"
+    },
+    "modal": {
+      "title": "Upload Minutes",
+      "meetingLabel": "Meeting:",
+      "summaryLabel": "Minutes Summary",
+      "summaryPlaceholder": "Brief description of the meeting minutes...",
+      "fileLabel": "Minutes File (Optional)",
+      "filePlaceholder": "Select PDF or Word document...",
+      "currentFile": "Current File:",
+      "fileFormats": "* Supported formats: .pdf, .doc, .docx",
+      "actions": {
+        "cancel": "Cancel",
+        "update": "Update Minutes",
+        "complete": "Complete Meeting"
+      },
+      "errors": {
+        "summary": "Please provide a minutes summary.",
+        "unexpected": "An unexpected error occurred."
+      }
+    },
+    "approveButton": {
+      "label": "APPROVE",
+      "toastSuccess": "Meeting approved successfully!"
+    },
+    "minutesList": {
+      "title": "Meeting Minutes Management",
+      "description": "Manage approved meetings and upload their minutes.",
+      "table": {
+        "date": "Date",
+        "title": "Meeting Title",
+        "university": "University",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "uploadButton": "Upload Minutes",
+      "viewEditButton": "View/Edit Minutes",
+      "empty": "No approved meetings found requiring minutes."
+    },
+    "rejectButton": {
+      "label": "REJECT",
+      "toastSuccess": "Meeting rejected successfully!"
+    }
+  },
+  "Home": {
+    "hero": {
+      "badge": "Malaysian Technical University Network",
+      "title": "Empowering Malaysia's\nTechnical Future",
+      "description": "A strategic alliance of UTHM, UTeM, UMPSA, and UniMAP driving TVET excellence and industry innovation.",
+      "ctaExplore": "Explore the Network",
+      "ctaAbout": "About MTUN"
+    },
+    "ecosystem": {
+      "badge": "The Ecosystem",
+      "title": "The Power of Four",
+      "description": "MTUN synergizes the strengths of Malaysia's four focused technical universities to produce highly skilled graduates for the global industry.",
+      "link": "Learn about our synergy"
+    },
+    "staff": {
+      "badge": "Our Leadership",
+      "title": "Meet Our Experts",
+      "viewAll": "View All"
+    },
+    "research": {
+      "badge": "Capabilities",
+      "title": "Research Excellence",
+      "description": "Pushing the boundaries of {area} through collaborative R&D.",
+      "areas": {
+        "ai": "Artificial Intelligence",
+        "energy": "Renewable Energy",
+        "manufacturing": "Smart Manufacturing",
+        "materials": "Advanced Materials"
+      }
+    },
+    "industry": {
+      "badge": "Partnerships",
+      "title": "Strong Collaboration with Industry",
+      "cta": "Explore Collaboration"
+    },
+    "news": {
+      "badge": "Updates",
+      "title": "News & Events",
+      "viewAll": "View All News",
+      "readArticle": "Read Article",
+      "research": "Research",
+      "industry": "Industry"
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "description": "Have questions about collaboration or our programs? Our dedicated team is ready to assist you.",
+      "addressLabel": "Address",
+      "addressValue": "MTUN Secretariat, Level 5, Ministry of Higher Education, Putrajaya, Malaysia",
+      "emailLabel": "Email",
+      "emailValue": "secretariat@mtun.edu.my",
+      "cta": "Contact Us",
+      "secretariatLocation": "MTUN Secretariat Location"
+    }
+  },
+  "Landing": {
+    "hero": {
+      "badge": "The MTUN Gateway",
+      "title": "Leading Technology\nUniversities Network",
+      "description": "Empowering the next generation of technical leaders through a unified digital ecosystem for research, collaboration, and governance.",
+      "ctaLogin": "Staff Portal Login",
+      "ctaResearch": "Explore Research",
+      "scroll": "Scroll to explore"
+    },
+    "impact": {
+      "badge": "Our Impact & Network",
+      "title": "Driving Technical Excellence",
+      "partners": {
+        "title": "Strategic Partnerships",
+        "description": "Connecting MTUN with global industry leaders to bridge the gap between academia and real-world innovation."
+      },
+      "research": {
+        "badge": "Total Research",
+        "label": "Active Projects"
+      },
+      "news": {
+        "title": "Latest News",
+        "viewAll": "View All"
+      },
+      "staff": {
+        "title": "Academic Leadership",
+        "description": "Access a directory of over {count} distinguished experts and researchers across the network.",
+        "link": "Browse Directory"
+      },
+      "faculties": {
+        "badge": "Faculties",
+        "label": "Advanced Research Labs"
+      }
+    },
+    "features": {
+      "badge": "System Capabilities",
+      "title": "Unified Technical Governance",
+      "description": "A comprehensive suite of tools designed to streamline university operations and enhance research output.",
+      "research": {
+        "title": "Research Management",
+        "description": "Centralized tracking of research projects, funding, and publications across all MTUN members."
+      },
+      "meetings": {
+        "title": "Meeting Systems",
+        "description": "Advanced scheduling and minute-taking system for high-level executive and technical sessions."
+      },
+      "kpi": {
+        "title": "KPI Tracking",
+        "description": "Real-time analytics and reporting on institutional performance and strategic goals."
+      }
+    },
+    "marquee": {
+      "badge": "Member Institutions"
+    },
+    "cta": {
+      "title": "Ready to lead the future?",
+      "description": "Join the network of Malaysia's leading technical universities and drive national innovation.",
+      "button": "Get Started Now",
+      "link": "Learn more about MTUN"
+    }
+  },
+  "LandingPage": {
+    "hero": {
+      "badge": "Malaysia's Leading Technology Network",
+      "title": "Empowering\nTechnology Future",
+      "description": "A unified digital ecosystem connecting premier technical universities to drive national innovation and academic excellence.",
+      "ctaExplore": "Explore Innovation",
+      "ctaPortal": "Staff Portal"
+    },
+    "network": {
+      "title": "MTUN Network",
+      "description": "A synergistic alliance of Malaysia's top technical universities, fostering a culture of shared knowledge and breakthrough research.",
+      "link": "Learn more about our mission"
+    },
+    "stats": {
+      "research": {
+        "badge": "Innovation Impact",
+        "label": "Research Projects Published"
+      },
+      "staff": {
+        "badge": "Academic Power",
+        "label": "Distinguished Experts"
+      }
+    },
+    "updates": {
+      "title": "Latest Updates",
+      "viewAll": "View All"
+    },
+    "map": {
+      "badge": "Our Network",
+      "title": "A Nationwide Technical Alliance",
+      "description": "MTUN connects four premier technical universities across Malaysia, creating a powerful network for resource sharing, joint research, and industrial collaboration."
+    }
+  },
+  "Research": {
+    "list": {
+      "searchPlaceholder": "Search projects, researchers, or status...",
+      "filters": "Filters",
+      "noResults": "No research projects found",
+      "noResultsSub": "Try adjusting your search terms.",
+      "statusOngoing": "Ongoing",
+      "leadResearcher": "Lead Researcher"
+    },
+    "page": {
+      "hero": {
+        "breadcrumbs": {
+          "home": "Home",
+          "research": "Research Impact"
+        },
+        "title": "Research",
+        "titleAccent": "Impact",
+        "description": "Exploring the frontiers of technology and applied sciences through high-impact research projects across the MTUN network."
+      },
+      "noResults": "No research projects found",
+      "noResultsSub": "We are currently updating our research database.",
+      "defaultStatus": "Ongoing",
+      "defaultDescription": "A high-impact research initiative focused on advancing technical knowledge and industrial application within the MTUN network.",
+      "leadResearcher": "Lead Researcher",
+      "university": "University",
+      "viewDetails": "View Details"
+    },
+    "form": {
+      "titleAdd": "Add New Project",
+      "titleEdit": "Edit Research Project",
+      "descriptionAdd": "Register a new research project to the system.",
+      "descriptionEdit": "Update the details for this research project.",
+      "sections": {
+        "details": "Project Information",
+        "additional": "Additional Details"
+      },
+      "fields": {
+        "title": "Project Title *",
+        "titlePlaceholder": "e.g. Advanced AI Research 2024",
+        "headResearcher": "Head Researcher *",
+        "selectResearcher": "Select Researcher",
+        "noStaff": "No staff found",
+        "status": "Status",
+        "statusOngoing": "Ongoing",
+        "statusCompleted": "Completed",
+        "statusPending": "Pending",
+        "partners": "Partners / Collaborators",
+        "partnersPlaceholder": "Search or create partners...",
+        "description": "Description",
+        "descriptionPlaceholder": "Briefly describe the project goals and outcomes..."
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "create": "Create Project",
+        "update": "Update Project"
+      },
+      "toastSuccessAdd": "Project created successfully!",
+      "toastSuccessEdit": "Project updated successfully!",
+      "toastError": "An unexpected error occurred."
+    }
+  },
+  "Contact": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Home",
+        "contact": "Contact"
+      },
+      "title": "Get in",
+      "titleAccent": "Touch",
+      "description": "Have a question or want to collaborate? Our team is here to help you connect with the MTUN network."
+    },
+    "info": {
+      "title": "Contact Information",
+      "location": {
+        "label": "Our Location",
+        "value": "MTUN Secretariat, Kuala Lumpur, Malaysia"
+      },
+      "email": {
+        "label": "Email Us",
+        "value": "info@mtun.edu.my"
+      },
+      "phone": {
+        "label": "Call Us",
+        "value": "+603-12345678"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "monFri": "Mon - Fri",
+        "satSun": "Sat - Sun",
+        "closed": "Closed"
+      }
+    },
+    "form": {
+      "title": "Send us a Message",
+      "description": "We'll get back to you as soon as possible.",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Message",
+      "placeholderName": "John Doe",
+      "placeholderEmail": "john@example.com",
+      "placeholderSubject": "How can we help?",
+      "placeholderMessage": "Your message here...",
+      "submit": "Send Message"
+    }
+  },
+  "About": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Home",
+        "about": "About MTUN"
+      },
+      "title": "About",
+      "description": "A synergistic alliance of Malaysia's premier technical universities, dedicated to pioneering technical excellence and industrial innovation."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be a globally recognized technical university network, leading in applied sciences, engineering, and technology for sustainable societal development."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To produce competent and innovative technical graduates, foster impactful research and development, and establish strategic collaborations with industry and community."
+    },
+    "journey": {
+      "badge": "Our Journey",
+      "title": "A Legacy of Technical Excellence",
+      "timeline": {
+        "2007": {
+          "title": "Foundation",
+          "desc": "MTUN was established to consolidate technical education in Malaysia."
+        },
+        "2012": {
+          "title": "Expansion",
+          "desc": "Integration of advanced research clusters across all member universities."
+        },
+        "2018": {
+          "title": "Industry 4.0",
+          "desc": "Pioneering the national transition to smart manufacturing and digital synergy."
+        },
+        "2025": {
+          "title": "Global Reach",
+          "desc": "Recognized as a leading technical network in the ASEAN region."
+        }
+      }
+    },
+    "institutions": {
+      "title": "Member Institutions",
+      "unimap": {
+        "name": "Universiti Malaysia Perlis (UniMAP)",
+        "desc": "Focuses on engineering and technology, fostering innovation and entrepreneurship."
+      },
+      "utem": {
+        "name": "Universiti Teknikal Malaysia Melaka (UTeM)",
+        "desc": "A pioneer in technical education, specializing in engineering, IT, and technology management."
+      },
+      "umpsa": {
+        "name": "Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)",
+        "desc": "Known for its applied sciences and engineering programs, with strong industry ties."
+      },
+      "uthm": {
+        "name": "Universiti Tun Hussein Onn Malaysia (UTHM)",
+        "desc": "A leading technical university in engineering, technology, and vocational education."
+      }
+    }
+  },
+  "Collaboration": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Home",
+        "collaboration": "Collaboration"
+      },
+      "title": "Strategic",
+      "titleAccent": "Collaborations",
+      "description": "Discover how MTUN bridges the gap between academic research and industrial application through high-impact joint projects."
+    },
+    "noResults": "No active collaborations found",
+    "noResultsSub": "Check back later for new joint initiatives.",
+    "partnerLabel": "Industry Partner",
+    "defaultPartner": "External Partner",
+    "defaultStatus": "Joint Project",
+    "defaultDescription": "A collaborative research initiative between MTUN and our strategic industry partners to drive innovation in technical sectors."
+  },
+  "Facilities": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Home",
+        "facilities": "Facilities"
+      },
+      "title": "World-Class",
+      "titleAccent": "Facilities",
+      "description": "Explore our state-of-the-art laboratories, research centers, and specialized equipment available across the MTUN network."
+    },
+    "noResults": "No facilities listed yet",
+    "noResultsSub": "We are currently updating our facility database.",
+    "defaultDescription": "Equipped with cutting-edge technology to support high-impact research and industrial testing across various technical domains.",
+    "defaultLocation": "Main Campus",
+    "form": {
+      "titleAdd": "Add New Facility",
+      "titleEdit": "Edit Facility",
+      "descriptionAdd": "Register a new university facility or laboratory.",
+      "descriptionEdit": "Update the details of this facility.",
+      "sections": {
+        "basic": "Basic Information",
+        "details": "Details & Media"
+      },
+      "fields": {
+        "name": "Facility Name *",
+        "namePlaceholder": "e.g. Advanced Robotics Lab",
+        "location": "Location / Building",
+        "locationPlaceholder": "e.g. Block C, Level 2",
+        "description": "Description",
+        "descriptionPlaceholder": "Describe the facility's purpose and equipment...",
+        "image": "Facility Image",
+        "imageSubtitle": "Upload a photo of the facility. Max 5MB.",
+        "university": "Affiliated University",
+        "linked": "Automatically Linked"
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "save": "Save Facility",
+        "update": "Update Facility"
+      }
+    },
+    "table": {
+      "headers": {
+        "facility": "Facility",
+        "location": "Location",
+        "university": "University",
+        "actions": "Actions"
+      },
+      "deleteConfirm": "Are you sure you want to delete this facility?",
+      "empty": "No facilities found."
+    }
+  },
+  "Industry": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Home",
+        "industry": "Industry Partners"
+      },
+      "title": "Industry",
+      "titleAccent": "Partners",
+      "description": "Bridging academia and industry to create impactful solutions, foster talent, and drive national economic growth."
+    },
+    "noResults": "No industry partners listed yet",
+    "noResultsSub": "We are currently expanding our strategic network.",
+    "defaultSector": "Strategic Partner",
+    "hubLabel": "MTUN Hub:",
+    "website": "Website",
+    "form": {
+      "titleAdd": "Add New Partner",
+      "titleEdit": "Edit Partner",
+      "descriptionAdd": "Register a new industry collaborator and set up their profile.",
+      "descriptionEdit": "Update the details of this industry partner.",
+      "sections": {
+        "profile": "Company Profile",
+        "contact": "Contact Information",
+        "media": "Media & Affiliation"
+      },
+      "fields": {
+        "name": "Company Name *",
+        "namePlaceholder": "e.g. Tech Solutions Sdn Bhd",
+        "sector": "Sector",
+        "sectorPlaceholder": "e.g. Manufacturing",
+        "website": "Website URL",
+        "websitePlaceholder": "https://www.company.com",
+        "contactPerson": "Key Contact Person *",
+        "contactPersonPlaceholder": "Full Name",
+        "phone": "Primary Phone Number *",
+        "phonePlaceholder": "+60 12-345 6789",
+        "email": "Email Address",
+        "emailPlaceholder": "contact@company.com",
+        "logo": "Company Logo",
+        "logoSubtitle": "Upload company logo (PNG, JPG). Max 2MB.",
+        "university": "Affiliated University",
+        "linked": "Automatically Linked",
+        "address": "Address",
+        "addressPlaceholder": "Full company address..."
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "save": "Save Partner",
+        "update": "Update Partner"
+      }
+    }
+  },
+  "News": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Home",
+        "news": "News & Events"
+      },
+      "title": "Latest",
+      "titleAccent": "News & Events",
+      "description": "Stay updated with the latest breakthroughs, partnerships, and academic events from across the MTUN network."
+    },
+    "noResults": "No news items found",
+    "noResultsSub": "Check back soon for the latest updates.",
+    "featuredBadge": "Featured",
+    "defaultAction": "A significant milestone achieved in collaboration with our industry partners, furthering our mission of technical excellence and national innovation.",
+    "readFullStory": "Read Full Story",
+    "partnerLabel": "Partner:"
+  },
+  "Staff": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Home",
+        "staff": "Academic Staff"
+      },
+      "title": "Academic",
+      "titleAccent": "Staff",
+      "description": "Meet our distinguished pool of experts, researchers, and academic leaders driving technical innovation across MTUN."
+    },
+    "noResults": "No staff members found",
+    "noResultsSub": "Our directory is currently being updated.",
+    "viewProfile": "View Profile",
+    "form": {
+      "titleAdd": "Add New Staff",
+      "titleEdit": "Edit Staff Profile",
+      "descriptionAdd": "Register a new staff member to the system.",
+      "descriptionEdit": "Update the information for this staff member.",
+      "sections": {
+        "personal": "Personal Information",
+        "academic": "Academic Information",
+        "additional": "Additional Details"
+      },
+      "fields": {
+        "name": "Staff Name *",
+        "namePlaceholder": "e.g. Dr. John Doe",
+        "email": "Email Address",
+        "emailPlaceholder": "john.doe@university.edu",
+        "phone": "Phone Number",
+        "phonePlaceholder": "+60 12-345 6789",
+        "faculty": "Faculty / COE",
+        "facultyPlaceholder": "e.g. Engineering",
+        "department": "Department *",
+        "departmentPlaceholder": "e.g. Computer Science",
+        "position": "Position *",
+        "positionPlaceholder": "e.g. Assistant Professor",
+        "expertise": "Expertise",
+        "expertisePlaceholder": "Describe areas of expertise...",
+        "image": "Profile Image URL",
+        "imagePlaceholder": "https://example.com/photo.jpg",
+        "university": "Assign University *",
+        "selectUniversity": "Select a university"
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "create": "Create Staff Member",
+        "update": "Update Staff Profile"
+      }
+    }
+  },
+  "Footer": {
+    "description": "The Malaysian Technical University Network (MTUN) is a premier alliance driving technical excellence and innovation across the nation.",
+    "quickLinks": "Quick Links",
+    "links": {
+      "academicStaff": "Academic Staff",
+      "researchImpact": "Research Impact",
+      "industryPartners": "Industry Partners",
+      "facilities": "Facilities"
+    },
+    "contactUs": "Contact Us",
+    "address": "MTUN Secretariat, Kuala Lumpur, Malaysia",
+    "copyright": "© 2026 MTUN Deans' System. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  }
+}

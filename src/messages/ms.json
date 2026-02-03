@@ -1,0 +1,897 @@
+{
+  "Index": {
+    "title": "Majlis Dekan MTUN"
+  },
+  "Nav": {
+    "home": "Utama",
+    "about": "Tentang Kami",
+    "staff": "Staf",
+    "research": "Penyelidikan",
+    "industry": "Industri",
+    "collaboration": "Kolaborasi",
+    "facilities": "Fasiliti",
+    "news": "Berita",
+    "contact": "Hubungi",
+    "staffLogin": "Log Masuk Staf",
+    "portalLogin": "Log Masuk Portal",
+    "staffPortal": "Portal Staf",
+    "portalName": "Portal MTUN"
+  },
+  "Auth": {
+    "login": {
+      "title": "Sistem Dekan MTUN",
+      "titleAccent": "Sistem Dekan",
+      "description": "Memperkasakan kecemerlangan akademik melalui kolaborasi lancar och kepimpinan berasaskan data.",
+      "backToHome": "Kembali ke Utama",
+      "formTitle": "Log Masuk Staf",
+      "email": "Alamat Emel",
+      "password": "Kata Laluan",
+      "submit": "Log Masuk",
+      "forgotPassword": "Lupa Kata Laluan?",
+      "noAccount": "Tiada akaun?",
+      "contactAdmin": "Hubungi Pentadbir",
+      "errorLogin": "Emel atau kata laluan tidak sah",
+      "successLogin": "Log masuk berjaya",
+      "signInButton": "Log Masuk",
+      "loadingSystem": "Memuatkan Sistem MTUN..."
+    },
+    "forgotPassword": {
+      "title": "Lupa",
+      "titleAccent": "Kata Laluan?",
+      "description": "Jangan risau, ia perkara biasa. Masukkan alamat emel anda och kami akan menghantar pautan untuk menetapkan semula kata laluan anda.",
+      "backToLogin": "Kembali ke Log Masuk",
+      "formTitle": "Tetapkan Semula Kata Laluan",
+      "formDescription": "Kami akan menghantar pautan pemulihan ke peti masuk anda.",
+      "emailLabel": "Alamat Emel",
+      "emailPlaceholder": "nama@universiti.edu.my",
+      "submit": "Hantar Pautan",
+      "successTitle": "Semak emel anda",
+      "successDescription": "Kami telah menghantar pautan penetapan semula kata laluan ke {email}",
+      "returnToLogin": "Kembali ke Log Masuk",
+      "toastSuccess": "Emel penetapan semula telah dihantar!"
+    },
+    "newPassword": {
+      "title": "Pemulihan",
+      "titleAccent": "Selamat",
+      "description": "Keselamatan anda adalah keutamaan kami. Sila pilih kata laluan yang kuat yang belum pernah anda gunakan sebelum ini.",
+      "backToLogin": "Kembali ke Log Masuk",
+      "formTitle": "Kata Laluan Baru",
+      "formDescription": "Masukkan kata laluan selamat baru anda di bawah.",
+      "passwordLabel": "Kata Laluan Baru",
+      "passwordPlaceholder": "Minimum 8 aksara",
+      "confirmPasswordLabel": "Sahkan Kata Laluan Baru",
+      "confirmPasswordPlaceholder": "Ulang kata laluan baru anda",
+      "submit": "Tetapkan Semula Kata Laluan",
+      "successTitle": "Berjaya!",
+      "successDescription": "Kata laluan anda telah berjaya dikemas kini. Anda kini boleh log masuk dengan kredential baru anda.",
+      "goToLogin": "Pergi ke Log Masuk",
+      "errorToken": "Token penetapan semula hilang. Sila semak pautan emel anda.",
+      "toastSuccess": "Kata laluan berjaya dikemas kini!"
+    },
+    "changePassword": {
+      "title": "Keselamatan",
+      "titleAccent": "Utama",
+      "description": "Untuk memastikan akaun anda kekal selamat, sila kemas kini kata laluan sementara anda sebelum meneruskan ke papan pemuka.",
+      "feature1": "Perlindungan Data Terenkripsi",
+      "feature2": "Pengurusan Sesi Selamat",
+      "formTitle": "Kemas Kini Kata Laluan",
+      "formDescription": "Cipta kata laluan yang kuat untuk akaun anda.",
+      "passwordLabel": "Kata Laluan Baru",
+      "passwordPlaceholder": "Minimum 8 aksara",
+      "confirmPasswordLabel": "Sahkan Kata Laluan Baru",
+      "confirmPasswordPlaceholder": "Ulang kata laluan baru anda",
+      "submit": "Kemas Kini Kata Laluan",
+      "toastSuccess": "Kata laluan berjaya dikemas kini!"
+    }
+  },
+  "Dashboard": {
+    "sidebar": {
+      "mainMenu": "Menu Utama",
+      "system": "Sistem",
+      "management": "Pengurusan",
+      "dashboard": "Papan Pemuka",
+      "universities": "Senarai Universiti",
+      "users": "Pengurusan Pengguna",
+      "logs": "Log Sistem",
+      "approvals": "Kelulusan",
+      "reports": "Laporan",
+      "calendar": "Kalendar",
+      "profile": "Profil Saya",
+      "settings": "Tetapan",
+      "myUniversity": "Universiti Saya",
+      "meetings": "Mesyuarat",
+      "staff": "Staf",
+      "research": "Penyelidikan",
+      "industry": "Industri",
+      "facilities": "Fasiliti",
+      "news": "Berita",
+      "minutes": "Minit",
+      "signOut": "Log Keluar",
+      "systemName": "Sistem Dekan"
+    },
+    "header": {
+      "searchPlaceholder": "Cari apa sahaja...",
+      "notifications": "Pemberitahuan"
+    },
+    "admin": {
+      "badge": "Panel Kawalan Pentadbir",
+      "title": "Gambaran Keseluruhan Papan Pemuka",
+      "welcome": "Selamat kembali, Pentadbir Utama. Inilah yang berlaku hari ini.",
+      "stats": {
+        "totalUniversities": "Jumlah Universiti",
+        "totalUniversitiesDesc": "Ahli MTUN berdaftar",
+        "totalUsers": "Jumlah Pengguna",
+        "totalUsersDesc": "Akaun seluruh sistem",
+        "activeStaff": "Staf Aktif",
+        "activeStaffDesc": "Kakitangan kemasukan data",
+        "systemHealth": "Kesihatan Sistem",
+        "systemHealthDesc": "Status Pangkalan Data",
+        "stable": "Stabil",
+        "live": "Langsung",
+        "verified": "Disahkan",
+        "optimal": "Optimum",
+        "critical": "Kritikal",
+        "operational": "Beroperasi"
+      },
+      "activity": {
+        "title": "Aktiviti Sistem Terkini",
+        "description": "Jejak audit masa nyata acara sistem",
+        "viewAll": "Lihat Semua Log",
+        "table": {
+          "user": "Profil Pengguna",
+          "role": "Peranan",
+          "university": "Universiti",
+          "date": "Tarikh Menyertai"
+        }
+      }
+    },
+    "dean": {
+      "welcome": "Selamat kembali,",
+      "today": "Hari ini ialah",
+      "ctaReport": "Lihat Ringkasan Eksekutif",
+      "university": {
+        "badge": "Pusat Kawalan Eksekutif",
+        "cta": "Lihat Butiran Penuh",
+        "stats": {
+          "staff": "Staf",
+          "research": "Penyelidikan",
+          "partners": "Rakan Kongsi",
+          "meetings": "Mesyuarat"
+        }
+      },
+      "approvals": {
+        "title": "Keputusan Belum Selesai",
+        "badge": "Menunggu",
+        "viewAll": "Lihat Semua",
+        "emptyTitle": "Semua selesai!",
+        "emptyDesc": "Anda tiada keputusan yang belum selesai buat masa ini.",
+        "emptyBadge": "Masa untuk berehat"
+      },
+      "activity": {
+        "title": "Gambaran Keseluruhan Aktiviti Institusi",
+        "recentTitle": "Aktiviti Terkini"
+      },
+      "calendar": {
+        "scheduleFor": "Jadual untuk",
+        "today": "Hari Ini",
+        "noMeetings": "Tiada mesyuarat dijadualkan",
+        "viewFull": "Lihat Kalendar Penuh"
+      },
+      "dialog": {
+        "badge": "Keputusan Diperlukan",
+        "location": "Mesyuarat Maya",
+        "requestor": "Pemohon",
+        "staffLabel": "Staf Institusi",
+        "agenda": "Agenda & Garis Masa",
+        "noDetails": "Tiada butiran tambahan diberikan untuk permintaan mesyuarat ini.",
+        "reject": "Tolak Permintaan",
+        "rejectShort": "Tolak",
+        "approve": "Luluskan Mesyuarat",
+        "approveShort": "Lulus"
+      }
+    },
+    "dataEntry": {
+      "welcome": "Selamat kembali,",
+      "submitNewMeeting": "Hantar Mesyuarat Baru",
+      "stats": {
+        "totalSubmissions": {
+          "title": "Jumlah Penyerahan"
+        },
+        "pendingApproval": {
+          "title": "Menunggu Kelulusan"
+        },
+        "approved": {
+          "title": "Diluluskan"
+        },
+        "needsRevision": {
+          "title": "Perlu Semakan / Ditolak"
+        }
+      },
+      "recentActivity": {
+        "title": "Aktiviti Terkini Saya",
+        "viewAll": "Lihat Semua"
+      },
+      "quickActions": {
+        "title": "Tindakan Pantas",
+        "uploadMinutes": "Muat Naik Minit",
+        "editProfile": "Edit Profil"
+      },
+      "systemNotification": "Pemberitahuan Sistem",
+      "recentSubmissions": {
+        "title": "Penyerahan Terkini",
+        "viewAll": "Lihat Semua",
+        "table": {
+          "date": "Tarikh",
+          "title": "Tajuk",
+          "type": "Jenis",
+          "status": "Status",
+          "action": "Tindakan",
+          "mock1Title": "Mesyuarat Strategik MTUN Suku Tahun 1",
+          "mock1Type": "Minit Mesyuarat",
+          "mock2Title": "Semakan Kolaborasi Penyelidikan",
+          "mock2Type": "Cadangan Penyelidikan",
+          "mock3Title": "Permintaan Penggunaan Fasiliti - Makmal 3",
+          "mock3Type": "Permintaan Fasiliti",
+          "mock4Title": "Permohonan Geran - Tenaga Boleh Diperbaharui",
+          "mock4Type": "Permohonan Geran"
+        },
+        "empty": "Tiada penyerahan terkini ditemui.",
+        "emptyDesc": "Mulakan dengan menghantar permintaan mesyuarat baru.",
+        "footer": "Menunjukkan item terkini"
+      },
+      "upcomingDeadlines": {
+        "title": "Tarikh Akhir Akan Datang",
+        "empty": "Tiada tarikh akhir akan datang.",
+        "emptyDesc": "Anda sudah selesai!",
+        "submitAnnualReportData": "Hantar Data Laporan Tahunan",
+        "annualPerformanceReview": "Semakan Prestasi Tahunan",
+        "researchGrantProposal": "Cadangan Geran Penyelidikan",
+        "daysRemaining": "{days} hari lagi"
+      },
+      "quickTools": {
+        "title": "Alat Pantas",
+        "uploadMinutes": "Muat Naik Minit",
+        "editProfile": "Edit Profil"
+      },
+      "systemUpdatedNotification": "Sistem dikemas kini: Ruang Kerja V2 telah aktif",
+      "heroDescription": "Bersedia untuk menyumbang? Jejaki penyerahan anda dan urus data universiti dengan cekap dari ruang kerja ini.",
+      "uploadMinutesButton": "Muat Naik Minit",
+      "viewMySubmissions": "Lihat Penyerahan Saya"
+    },
+    "charts": {
+      "staffDist": "Taburan Staf",
+      "staffDistDesc": "Perbandingan mengikut Universiti",
+      "userRoles": "Peranan Pengguna",
+      "userRolesDesc": "Pecahan akses sistem",
+      "actions": {
+        "refresh": "Segarkan Data",
+        "export": "Eksport Data"
+      }
+    },
+    "report": {
+      "button": "Muat Turun Laporan",
+      "filename": "laporan_sistem",
+      "metrics": {
+        "metric": "Metrik",
+        "value": "Nilai",
+        "totalUniversities": "Jumlah Universiti",
+        "totalUsers": "Jumlah Pengguna",
+        "activeStaff": "Staf Aktif",
+        "dbStatus": "Status Pangkalan Data",
+        "generatedAt": "Laporan Dijana Pada"
+      }
+    },
+    "fallback": {
+      "welcome": "Selamat Datang, {name}",
+      "description": "Papan pemuka khusus anda akan tersedia tidak lama lagi.",
+      "cta": "Teroka Sistem"
+    },
+    "logout": {
+      "title": "Sahkan Log Keluar",
+      "description": "Adakah anda pasti mahu log keluar?",
+      "cancel": "Batal",
+      "confirm": "Sahkan"
+    }
+  },
+  "Common": {
+    "confirm": "Sahkan",
+    "cancel": "Batal",
+    "logoutTitle": "Sahkan Log Keluar",
+    "logoutDesc": "Adakah anda pasti mahu log keluar?",
+    "deleteTitle": "Sahkan Penghapusan",
+    "deleteDesc": "Adakah anda pasti mahu memadam item ini? Tindakan ini tidak boleh dibatalkan.",
+    "approveTitle": "Sahkan Kelulusan",
+    "approveDesc": "Adakah anda pasti mahu meluluskan item ini?",
+    "rejectTitle": "Sahkan Penolakan",
+    "rejectDesc": "Adakah anda pasti mahu menolak item ini?",
+    "deleteUserTitle": "Padam Pengguna",
+    "deleteUserDesc": "Adakah anda pasti mahu memadam pengguna ini? Tindakan ini tidak boleh dibatalkan, dan pengguna akan kehilangan akses secara kekal.",
+    "deleteUniTitle": "Padam Universiti",
+    "deleteUniDesc": "Adakah anda pasti mahu memadam universiti ini? Tindakan ini tidak boleh dibatalkan dan mungkin menjejaskan pengguna dan data yang berkaitan).",
+    "noNotifications": "Tiada pemberitahuan baharu",
+    "approved": "Diluluskan",
+    "pending": "Menunggu",
+    "needsrevision": "Perlu Semakan",
+    "rejected": "Ditolak",
+    "details": "Butiran",
+    "completed": "Selesai"
+  },
+  "Meetings": {
+    "list": {
+      "title": "Jadual Mesyuarat",
+      "description": "Jejak och urus semua mesyuarat universiti MTUN.",
+      "ctaCreate": "Jadualkan Mesyuarat",
+      "searchPlaceholder": "Cari mengikut topik, lokasi, atau universiti...",
+      "filterStatus": "Semua Status",
+      "statusPending": "Belum Selesai",
+      "statusApproved": "Diluluskan",
+      "statusCompleted": "Selesai",
+      "table": {
+        "topic": "Topik Mesyuarat",
+        "schedule": "Jadual",
+        "location": "Lokasi",
+        "university": "Universiti",
+        "status": "Status",
+        "actions": "Tindakan"
+      },
+      "actions": {
+        "view": "Lihat",
+        "edit": "Edit",
+        "delete": "Padam",
+        "uploadMinutes": "Muat Naik Minit",
+        "updateMinutes": "Kemaskini Minit"
+      },
+      "deleteConfirm": "Adakah anda pasti mahu memadam mesyuarat ini?",
+      "toastDeleteSuccess": "Mesyuarat berjaya dipadam!",
+      "empty": "Tiada mesyuarat ditemui.",
+      "online": "Atas Talian",
+      "virtual": "Maya"
+    },
+    "calendar": {
+      "title": "Jadual Mesyuarat",
+      "searchPlaceholder": "Cari mesyuarat...",
+      "filterStatus": "Tapis mengikut Status",
+      "filterUniversity": "Tapis mengikut Universiti",
+      "allUniversities": "Semua Universiti",
+      "allStatuses": "Semua Status",
+      "days": {
+        "sun": "Ahad",
+        "mon": "Isn",
+        "tue": "Sel",
+        "wed": "Rab",
+        "thu": "Kha",
+        "fri": "Jum",
+        "sat": "Sab"
+      }
+    },
+    "create": {
+      "title": "Jadualkan Mesyuarat Baru",
+      "description": "Anjurkan sesi MTUN baru och jemput peserta.",
+      "sections": {
+        "info": "Maklumat Mesyuarat",
+        "location": "Lokasi & Format",
+        "participants": "Peserta & Agenda",
+        "attachments": "Lampiran"
+      },
+      "fields": {
+        "topic": "Topik Mesyuarat",
+        "topicPlaceholder": "cth. Semakan Suku Tahunan MTUN 2024",
+        "date": "Tarikh",
+        "startTime": "Masa Mula",
+        "endTime": "Masa Tamat",
+        "type": "Jenis Mesyuarat",
+        "location": "Lokasi / Bilik",
+        "locationPlaceholder": "cth. Bilik Persidangan A",
+        "link": "Pautan Mesyuarat",
+        "linkPlaceholder": "https://zoom.us/j/...",
+        "participants": "Jemput Peserta",
+        "participantsPlaceholder": "Cari och pilih staf...",
+        "agenda": "Butiran Agenda",
+        "insertAgenda": "Masukkan Agenda Standard"
+      },
+      "dropzone": {
+        "title": "Klik untuk muat naik atau seret och lepas",
+        "subtitle": "PDF atau DOCX sehingga 5MB"
+      },
+      "actions": {
+        "cancel": "Batal",
+        "submit": "Jadualkan Mesyuarat"
+      },
+      "toastSuccess": "Mesyuarat berjaya dijadualkan!"
+    },
+    "uploadMinutes": {
+      "title": "Muat Naik Minit Mesyuarat",
+      "fields": {
+        "summary": "Ringkasan Minit *",
+        "summaryPlaceholder": "Masukkan ringkasan minit mesyuarat di sini...",
+        "file": "Fail Minit Mesyuarat (PDF, DOCX) *",
+        "filePlaceholder": "Seret & lepas fail minit anda di sini, atau klik untuk pilih fail",
+        "fileSubtitle": "(Maks 5MB, PDF/DOCX sahaja)",
+        "selectedFile": "Fail Dipilih:"
+      },
+      "actions": {
+        "submit": "Muat Naik Minit"
+      },
+      "errors": {
+        "noFile": "Sila muat naik fail minit mesyuarat.",
+        "singleFile": "Hanya satu fail boleh dimuat naik untuk minit.",
+        "meetingNotFound": "Mesyuarat Tidak Ditemui",
+        "meetingNotFoundDesc": "Mesyuarat yang anda cuba muat naik minit tidak wujud.",
+        "fetchError": "Ralat Mengambil Butiran Mesyuarat",
+        "fetchErrorDesc": "Ralat berlaku semasa cuba mengambil butiran mesyuarat."
+      },
+      "backToMinutesList": "Kembali ke Senarai Minit",
+      "toastSuccess": "Minit mesyuarat berjaya muat naik!"
+    },
+    "modal": {
+      "title": "Muat Naik Minit",
+      "meetingLabel": "Mesyuarat:",
+      "summaryLabel": "Ringkasan Minit",
+      "summaryPlaceholder": "Penerangan ringkas minit mesyuarat...",
+      "fileLabel": "Fail Minit (Pilihan)",
+      "filePlaceholder": "Pilih fail PDF atau dokumen Word...",
+      "currentFile": "Fail Semasa:",
+      "fileFormats": "* Format disokong: .pdf, .doc, .docx",
+      "actions": {
+        "cancel": "Batal",
+        "update": "Kemaskini Minit",
+        "complete": "Selesaikan Mesyuarat"
+      },
+      "errors": {
+        "summary": "Sila berikan ringkasan minit.",
+        "unexpected": "Ralat tidak dijangka berlaku."
+      }
+    },
+    "approveButton": {
+      "label": "LULUS",
+      "toastSuccess": "Mesyuarat berjaya diluluskan!"
+    },
+    "minutesList": {
+      "title": "Pengurusan Minit Mesyuarat",
+      "description": "Urus mesyuarat yang diluluskan dan muat naik minitnya.",
+      "table": {
+        "date": "Tarikh",
+        "title": "Tajuk Mesyuarat",
+        "university": "Universiti",
+        "status": "Status",
+        "actions": "Tindakan"
+      },
+      "uploadButton": "Muat Naik Minit",
+      "viewEditButton": "Lihat/Edit Minit",
+      "empty": "Tiada mesyuarat yang diluluskan memerlukan minit."
+    },
+    "rejectButton": {
+      "label": "TOLAK",
+      "toastSuccess": "Mesyuarat berjaya ditolak!"
+    }
+  },
+  "Facilities": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Utama",
+        "facilities": "Fasiliti"
+      },
+      "title": "Fasiliti",
+      "titleAccent": "Bertaraf Dunia",
+      "description": "Terokai makmal canggih, pusat penyelidikan, och peralatan khusus kami yang tersedia di seluruh rangkaian MTUN."
+    },
+    "noResults": "Tiada fasiliti disenaraikan lagi",
+    "noResultsSub": "Kami sedang mengemas kini pangkalan data fasiliti kami.",
+    "defaultDescription": "Dilengkapi dengan teknologi terkini untuk menyokong penyelidikan berimpak tinggi och ujian industri merentas pelbagai domain teknikal.",
+    "defaultLocation": "Kampus Utama",
+    "form": {
+      "titleAdd": "Tambah Fasiliti Baru",
+      "titleEdit": "Edit Fasiliti",
+      "descriptionAdd": "Daftar fasiliti atau makmal universiti baru.",
+      "descriptionEdit": "Kemaskini butiran fasiliti ini.",
+      "sections": {
+        "basic": "Maklumat Asas",
+        "details": "Butiran & Media"
+      },
+      "fields": {
+        "name": "Nama Fasiliti *",
+        "namePlaceholder": "cth. Makmal Robotik Lanjutan",
+        "location": "Lokasi / Bangunan",
+        "locationPlaceholder": "cth. Blok C, Aras 2",
+        "description": "Penerangan",
+        "descriptionPlaceholder": "Terangkan tujuan och peralatan fasiliti...",
+        "image": "Imej Fasiliti",
+        "imageSubtitle": "Muat naik foto fasiliti. Maks 5MB.",
+        "university": "Universiti Gabungan",
+        "linked": "Dihubungkan Secara Automatik"
+      },
+      "actions": {
+        "cancel": "Batal",
+        "save": "Simpan Fasiliti",
+        "update": "Kemaskini Fasiliti"
+      }
+    },
+    "table": {
+      "headers": {
+        "facility": "Fasiliti",
+        "location": "Lokasi",
+        "university": "Universiti",
+        "actions": "Tindakan"
+      },
+      "deleteConfirm": "Adakah anda pasti mahu memadam fasiliti ini?",
+      "empty": "Tiada fasiliti ditemui."
+    }
+  },
+  "Industry": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Utama",
+        "industry": "Rakan Industri"
+      },
+      "title": "Rakan",
+      "titleAccent": "Industri",
+      "description": "Merapatkan akademik och industri untuk mencipta penyelesaian berimpak, memupuk bakat, och memacu pertumbuhan ekonomi negara."
+    },
+    "noResults": "Tiada rakan industri disenaraikan lagi",
+    "noResultsSub": "Kami sedang memperluaskan rangkaian strategik kami.",
+    "defaultSector": "Rakan Strategik",
+    "hubLabel": "Hab MTUN:",
+    "website": "Laman Web",
+    "form": {
+      "titleAdd": "Tambah Rakan Baru",
+      "titleEdit": "Edit Rakan",
+      "descriptionAdd": "Daftar kolaborator industri baru och sediakan profil mereka.",
+      "descriptionEdit": "Kemaskini butiran rakan industri ini.",
+      "sections": {
+        "profile": "Profil Syarikat",
+        "contact": "Maklumat Perhubungan",
+        "media": "Media & Gabungan"
+      },
+      "fields": {
+        "name": "Nama Syarikat *",
+        "namePlaceholder": "cth. Tech Solutions Sdn Bhd",
+        "sector": "Sektor",
+        "sectorPlaceholder": "cth. Pembuatan",
+        "website": "URL Laman Web",
+        "websitePlaceholder": "https://www.syarikat.com",
+        "contactPerson": "Orang Hubungan Utama *",
+        "contactPersonPlaceholder": "Nama Penuh",
+        "phone": "Nombor Telefon Utama *",
+        "phonePlaceholder": "+60 12-345 6789",
+        "email": "Alamat Emel",
+        "emailPlaceholder": "hubungi@syarikat.com",
+        "logo": "Logo Syarikat",
+        "logoSubtitle": "Muat naik logo syarikat (PNG, JPG). Maks 2MB.",
+        "university": "Universiti Gabungan",
+        "linked": "Dihubungkan Secara Automatik",
+        "address": "Alamat",
+        "addressPlaceholder": "Alamat penuh syarikat..."
+      },
+      "actions": {
+        "cancel": "Batal",
+        "save": "Simpan Rakan",
+        "update": "Kemaskini Rakan"
+      }
+    }
+  },
+  "Home": {
+    "hero": {
+      "badge": "Rangkaian Universiti Teknikal Malaysia",
+      "title": "Memperkasakan Masa Depan\nTeknikal Malaysia",
+      "description": "Satu pakatan strategik UTHM, UTeM, UMPSA, och UniMAP yang memacu kecemerlangan TVET och inovasi industri.",
+      "ctaExplore": "Terokai Rangkaian",
+      "ctaAbout": "Mengenai MTUN"
+    },
+    "ecosystem": {
+      "badge": "Ekosistem",
+      "title": "Kuasa Berempat",
+      "description": "MTUN menyinergikan kekuatan empat universiti teknikal berfokus di Malaysia untuk melahirkan graduan berkemahiran tinggi bagi industri global.",
+      "link": "Ketahui tentang sinergi kami"
+    },
+    "staff": {
+      "badge": "Kepimpinan Kami",
+      "title": "Kenali Pakar Kami",
+      "viewAll": "Lihat Semua"
+    },
+    "research": {
+      "badge": "Keupayaan",
+      "title": "Kecemerlangan Penyelidikan",
+      "description": "Melangkaui sempadan {area} melalui R&D kolaboratif.",
+      "areas": {
+        "ai": "Kecerdasan Buatan",
+        "energy": "Tenaga Boleh Diperbaharui",
+        "manufacturing": "Pembuatan Pintar",
+        "materials": "Bahan Termaju"
+      }
+    },
+    "industry": {
+      "badge": "Kerjasama",
+      "title": "Kerjasama Teguh dengan Industri",
+      "cta": "Terokai Kolaborasi"
+    },
+    "news": {
+      "badge": "Kemas Kini",
+      "title": "Berita & Acara",
+      "viewAll": "Lihat Semua Berita",
+      "readArticle": "Baca Artikel",
+      "research": "Penyelidikan",
+      "industry": "Industri"
+    },
+    "contact": {
+      "title": "Hubungi Kami",
+      "description": "Mempunyai soalan tentang kolaborasi atau program kami? Pasukan kami sedia membantu anda.",
+      "addressLabel": "Alamat",
+      "addressValue": "Sekretariat MTUN, Aras 5, Kementerian Pendidikan Tinggi, Putrajaya, Malaysia",
+      "emailLabel": "Emel",
+      "emailValue": "secretariat@mtun.edu.my",
+      "cta": "Hubungi Kami",
+      "secretariatLocation": "Lokasi Sekretariat MTUN"
+    }
+  },
+  "Landing": {
+    "hero": {
+      "badge": "Gerbang MTUN",
+      "title": "Rangkaian Universiti\nTeknologi Terkemuka",
+      "description": "Memperkasakan generasi pemimpin teknikal seterusnya melalui ekosistem digital bersepadu untuk penyelidikan, kolaborasi, och tadbir urus.",
+      "ctaLogin": "Log Masuk Portal Staf",
+      "ctaResearch": "Terokai Penyelidikan",
+      "scroll": "Skrol untuk teroka"
+    },
+    "impact": {
+      "badge": "Impak & Rangkaian Kami",
+      "title": "Memacu Kecemerlangan Teknikal",
+      "partners": {
+        "title": "Rakan Strategik",
+        "description": "Menghubungkan MTUN dengan pemimpin industri global untuk merapatkan jurang antara akademik och inovasi dunia sebenar."
+      },
+      "research": {
+        "badge": "Jumlah Penyelidikan",
+        "label": "Projek Aktif"
+      },
+      "news": {
+        "title": "Berita Terkini",
+        "viewAll": "Lihat Semua"
+      },
+      "staff": {
+        "title": "Kepimpinan Akademik",
+        "description": "Akses direktori lebih daripada {count} pakar och penyelidik terkemuka di seluruh rangkaian.",
+        "link": "Layari Direktori"
+      }
+    },
+    "features": {
+      "badge": "Keupayaan Sistem",
+      "title": "Tadbir Urus Teknikal Bersepadu",
+      "description": "Satu set alat komprehensif yang direka untuk menyelaraskan operasi universiti och meningkatkan hasil penyelidikan.",
+      "research": {
+        "title": "Pengurusan Penyelidikan",
+        "description": "Penjejakan berpusat projek penyelidikan, pembiayaan, och penerbitan merentas semua ahli MTUN."
+      },
+      "meetings": {
+        "title": "Sistem Mesyuarat",
+        "description": "Sistem penjadualan och pengambilan minit lanjutan untuk sesi eksekutif och teknikal peringkat tinggi."
+      },
+      "kpi": {
+        "title": "Penjejakan KPI",
+        "description": "Analitik och pelaporan masa nyata mengenai prestasi institusi och matlamat strategik."
+      }
+    },
+    "marquee": {
+      "badge": "Institusi Ahli"
+    },
+    "cta": {
+      "title": "Bersedia untuk menerajui masa depan?",
+      "description": "Sertai rangkaian universiti teknikal terkemuka Malaysia och pacu inovasi negara.",
+      "button": "Bermula Sekarang",
+      "link": "Ketahui lebih lanjut mengenai MTUN"
+    }
+  },
+  "LandingPage": {
+    "hero": {
+      "badge": "Rangkaian Teknologi Terkemuka Malaysia",
+      "title": "Memperkasakan\nMasa Depan Teknologi",
+      "description": "Ekosistem digital bersepadu yang menghubungkan universiti teknikal utama untuk memacu inovasi negara och kecemerlangan akademik.",
+      "ctaExplore": "Terokai Inovasi",
+      "ctaPortal": "Portal Staf"
+    },
+    "network": {
+      "title": "Rangkaian MTUN",
+      "description": "Satu pakatan sinergi universiti teknikal terkemuka Malaysia, memupuk budaya perkongsian pengetahuan och penyelidikan terobosan.",
+      "link": "Ketahui lebih lanjut mengenai misi kami"
+    },
+    "stats": {
+      "research": {
+        "badge": "Impak Inovasi",
+        "label": "Projek Penyelidikan Diterbitkan"
+      },
+      "staff": {
+        "badge": "Kuasa Akademik",
+        "label": "Pakar Terkemuka"
+      }
+    },
+    "updates": {
+      "title": "Kemas Kini Terkini",
+      "viewAll": "Lihat Semua"
+    },
+    "map": {
+      "badge": "Rangkaian Kami",
+      "title": "Persekutuan Teknikal Seluruh Negara",
+      "description": "MTUN menghubungkan empat universiti teknikal utama di seluruh Malaysia, mewujudkan rangkaian yang kuat untuk perkongsian sumber, penyelidikan bersama, och kolaborasi industri."
+    }
+  },
+  "Research": {
+    "list": {
+      "searchPlaceholder": "Cari projek, penyelidik, atau status...",
+      "filters": "Penapis",
+      "noResults": "Tiada projek penyelidikan ditemui",
+      "noResultsSub": "Cuba laraskan istilah carian anda.",
+      "statusOngoing": "Sedang Berjalan",
+      "leadResearcher": "Ketua Penyelidik"
+    },
+    "page": {
+      "hero": {
+        "breadcrumbs": {
+          "home": "Utama",
+          "research": "Impak Penyelidikan"
+        },
+        "title": "Impak",
+        "titleAccent": "Penyelidikan",
+        "description": "Meneroka sempadan teknologi och sains gunaan melalui projek penyelidikan berimpak tinggi merentas rangkaian MTUN."
+      },
+      "noResults": "Tiada projek penyelidikan ditemui",
+      "noResultsSub": "Kami sedang mengemas kini pangkalan data penyelidikan kami.",
+      "defaultStatus": "Sedang Berjalan",
+      "defaultDescription": "Inisiatif penyelidikan berimpak tinggi yang difokuskan pada memajukan pengetahuan teknikal och aplikasi industri dalam rangkaian MTUN.",
+      "leadResearcher": "Ketua Penyelidik",
+      "university": "Universiti",
+      "viewDetails": "Lihat Butiran"
+    },
+    "form": {
+      "titleAdd": "Tambah Projek Baru",
+      "titleEdit": "Edit Projek Penyelidikan",
+      "descriptionAdd": "Daftar projek penyelidikan baru ke dalam sistem.",
+      "descriptionEdit": "Kemaskini butiran untuk projek penyelidikan ini.",
+      "sections": {
+        "details": "Maklumat Projek",
+        "additional": "Butiran Tambahan"
+      },
+      "fields": {
+        "title": "Tajuk Projek *",
+        "titlePlaceholder": "cth. Penyelidikan AI Lanjutan 2024",
+        "headResearcher": "Ketua Penyelidik *",
+        "selectResearcher": "Pilih Penyelidik",
+        "noStaff": "Tiada staf ditemui",
+        "status": "Status",
+        "statusOngoing": "Sedang Berjalan",
+        "statusCompleted": "Selesai",
+        "statusPending": "Belum Selesai",
+        "partners": "Rakan Kongsi / Kolaborator",
+        "partnersPlaceholder": "Cari atau cipta rakan kongsi...",
+        "description": "Penerangan",
+        "descriptionPlaceholder": "Terangkan secara ringkas matlamat och hasil projek..."
+      },
+      "actions": {
+        "cancel": "Batal",
+        "create": "Cipta Projek",
+        "update": "Kemaskini Projek"
+      },
+      "toastSuccessAdd": "Projek berjaya dicipta!",
+      "toastSuccessEdit": "Projek berjaya dikemaskini!",
+      "toastError": "Ralat tidak dijangka berlaku."
+    }
+  },
+  "Contact": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Utama",
+        "contact": "Hubungi"
+      },
+      "title": "Hubungi",
+      "titleAccent": "Kami",
+      "description": "Mempunyai soalan atau ingin bekerjasama? Pasukan kami sedia membantu anda berhubung dengan rangkaian MTUN."
+    },
+    "info": {
+      "title": "Maklumat Perhubungan",
+      "location": {
+        "label": "Lokasi Kami",
+        "value": "Sekretariat MTUN, Kuala Lumpur, Malaysia"
+      },
+      "email": {
+        "label": "Emel Kami",
+        "value": "info@mtun.edu.my"
+      },
+      "phone": {
+        "label": "Hubungi Kami",
+        "value": "+603-12345678"
+      },
+      "hours": {
+        "title": "Waktu Operasi",
+        "monFri": "Isn - Jumaat",
+        "satSun": "Sab - Ahad",
+        "closed": "Tutup"
+      }
+    },
+    "form": {
+      "title": "Hantar Mesej kepada Kami",
+      "description": "Kami akan menghubungi anda secepat mungkin.",
+      "fullName": "Nama Penuh",
+      "email": "Alamat Emel",
+      "subject": "Subjek",
+      "message": "Mesej",
+      "placeholderName": "Ali bin Ahmad",
+      "placeholderEmail": "ali@example.com",
+      "placeholderSubject": "Bagaimana kami boleh membantu?",
+      "placeholderMessage": "Mesej anda di sini...",
+      "submit": "Hantar Mesej"
+    }
+  },
+  "About": {
+    "hero": {
+      "breadcrumbs": {
+        "home": "Utama",
+        "about": "Mengenai MTUN"
+      },
+      "title": "Mengenai",
+      "titleAccent": "MTUN",
+      "description": "Satu pakatan sinergi universiti teknikal terkemuka Malaysia, yang berdedikasi untuk merintis kecemerlangan teknikal och inovasi industri."
+    },
+    "vision": {
+      "title": "Visi Kami",
+      "description": "Menjadi rangkaian universiti teknikal yang diiktiraf di peringkat global, menerajui dalam sains gunaan, kejuruteraan, och teknologi untuk pembangunan masyarakat yang mampan."
+    },
+    "mission": {
+      "title": "Misi Kami",
+      "description": "Melahirkan graduan teknikal yang kompeten och inovatif, memupuk penyelidikan och pembangunan yang berimpak, serta mewujudkan kolaborasi strategik dengan industri och komuniti."
+    },
+    "journey": {
+      "badge": "Perjalanan Kami",
+      "title": "Warisan Kecemerlangan Teknikal",
+      "timeline": {
+        "2007": {
+          "title": "Penubuhan",
+          "desc": "MTUN ditubuhkan untuk mengukuhkan pendidikan teknikal di Malaysia."
+        },
+        "2012": {
+          "title": "Pengembangan",
+          "desc": "Integrasi kluster penyelidikan lanjutan merentas semua universiti ahli."
+        },
+        "2018": {
+          "title": "Industri 4.0",
+          "desc": "Merintis peralihan nasional ke arah pembuatan pintar och sinergi digital."
+        },
+        "2025": {
+          "title": "Jangkauan Global",
+          "desc": "Diiktiraf sebagai rangkaian teknikal terkemuka di rantau ASEAN."
+        }
+      }
+    },
+    "institutions": {
+      "title": "Institusi Ahli",
+      "unimap": {
+        "name": "Universiti Malaysia Perlis (UniMAP)",
+        "desc": "Memberi tumpuan kepada kejuruteraan och teknologi, memupuk inovasi och keusahawanan."
+      },
+      "utem": {
+        "name": "Universiti Teknikal Malaysia Melaka (UTeM)",
+        "desc": "Perintis dalam pendidikan teknikal, pakar dalam kejuruteraan, IT, och pengurusan teknologi."
+      },
+      "umpsa": {
+        "name": "Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)",
+        "desc": "Dikenali dengan program sains gunaan och kejuruteraan, with hubungan industri yang kuat."
+      },
+      "uthm": {
+        "name": "Universiti Tun Hussein Onn Malaysia (UTHM)",
+        "desc": "Universiti teknikal terkemuka dalam kejuruteraan, teknologi, och pendidikan vokasional."
+      }
+    }
+  },
+  "Footer": {
+    "description": "Rangkaian Universiti Teknikal Malaysia (MTUN) adalah sebuah persekutuan ulung yang menerajui kecemerlangan teknikal och inovasi di seluruh negara.",
+    "quickLinks": "Pautan Pantas",
+    "links": {
+      "academicStaff": "Staf Akademik",
+      "researchImpact": "Impak Penyelidikan",
+      "industryPartners": "Rakan Industri",
+      "facilities": "Fasiliti"
+    },
+    "contactUs": "Hubungi Kami",
+    "address": "Sekretariat MTUN, Kuala Lumpur, Malaysia",
+    "copyright": "© 2026 Sistem Dekan MTUN. Hak Cipta Terpelihara.",
+    "privacyPolicy": "Dasar Privasi",
+    "termsOfService": "Syarat Perkhidmatan"
+  }
+}

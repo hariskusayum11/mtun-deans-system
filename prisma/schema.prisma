@@ -1,0 +1,270 @@
+// prisma/schema.prisma (Clean Version)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  super_admin
+  dean
+  data_entry
+}
+
+enum MeetingStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+enum Visibility {
+  private
+  university
+  mtun
+  public
+}
+
+enum LoginStatus {
+  SUCCESS
+  FAILED
+  LOCKED
+}
+
+model University {
+  id         String  @id @default(uuid())
+  name       String
+  short_code String  @unique
+  website    String?
+  logo_url   String?
+
+  users              User[]
+  staff              Staff[]
+  facilities         Facility[]
+  meetings           Meeting[]
+  companies          Company[]
+  activities         Activity[]
+  industry_activities IndustryActivity[]
+}
+
+model User {
+  id                  String    @id @default(uuid())
+  email               String    @unique
+  password_hash       String
+  name                String?
+  image               String?
+  phoneNumber         String?
+  role                Role
+  created_at          DateTime  @default(now())
+  updated_at          DateTime  @updatedAt
+  lastLoginAt         DateTime?
+  failedLoginAttempts Int       @default(0)
+  lockedUntil         DateTime?
+  isPasswordChanged   Boolean   @default(false)
+
+  university_id String?
+  university    University? @relation(fields: [university_id], references: [id])
+  loginLogs     LoginLog[]
+  createdMeetings Meeting[] @relation("MeetingCreator")
+  meetingsParticipated Meeting[] @relation("MeetingParticipants")
+  notifications Notification[] // Inverse relation for Notification model
+}
+
+model Staff {
+  id            String    @id @default(uuid())
+  name          String
+  position      String
+  department    String
+  faculty       String?
+  expertise     String?
+  email         String?   @unique
+  phone         String?
+  image_url     String?
+  university_id String
+  university    University @relation(fields: [university_id], references: [id])
+  
+  research_projects ResearchProject[]
+  
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  activities    Activity[]
+}
+
+model ExternalPartner {
+  id         String            @id @default(uuid())
+  name       String            @unique
+  created_at DateTime          @default(now())
+  projects   ResearchProject[] @relation("ProjectCollaborators")
+}
+
+model ResearchProject {
+  id            String    @id @default(uuid())
+  title         String
+  status        String?   @default("Ongoing")
+  description   String?
+  
+  collaborators ExternalPartner[] @relation("ProjectCollaborators")
+  
+  staff_id      String
+  staff         Staff     @relation(fields: [staff_id], references: [id])
+  
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+}
+
+model Facility {
+  id            String    @id @default(uuid())
+  name          String
+  description   String?
+  location      String?
+  image_url     String?
+  university_id String
+  university    University @relation(fields: [university_id], references: [id])
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+}
+
+model Company {
+  id            String    @id @default(uuid())
+  name          String
+  sector        String?
+  address       String?
+  contact_person String
+  phone         String
+  email         String?
+  website       String?
+  image_url     String?
+  university_id String
+  university    University @relation(fields: [university_id], references: [id])
+  industry_activities IndustryActivity[] @relation("CompanyIndustryActivities")
+  activities    Activity[] @relation("CompanyActivities")
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+}
+
+model IndustryActivity {
+  id             String    @id @default(uuid())
+  project_name   String
+  date           DateTime
+  status         String
+  action         String?
+  pic_company    String
+  pic_university String
+  company_id     String
+  company        Company   @relation("CompanyIndustryActivities", fields: [company_id], references: [id])
+  university_id  String
+  university     University @relation(fields: [university_id], references: [id])
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+}
+
+model Activity {
+  id             String @id @default(uuid())
+  company_id     String
+  university_id  String
+
+  title   String
+  date    DateTime
+  status  String
+  outcome String?
+
+  pic_university String?
+  staff          Staff?  @relation(fields: [pic_university], references: [id])
+
+  company    Company    @relation("CompanyActivities", fields: [company_id], references: [id])
+  university University @relation(fields: [university_id], references: [id])
+}
+
+model Meeting {
+  id               String        @id @default(uuid())
+  university_id    String
+  title            String
+  date             DateTime
+  start_time       DateTime
+  end_time         DateTime?
+  location         String?
+  meeting_link     String?
+  agenda_details   String?
+  agenda_file_url  String?
+  minutes_details  String?
+  minutes_file_url String?
+  dean_approved    Boolean       @default(false)
+  attendees        String?
+
+  status           MeetingStatus @default(PENDING)
+
+  created_by_id    String?
+  created_by       User?         @relation("MeetingCreator", fields: [created_by_id], references: [id])
+
+  participants     User[]        @relation("MeetingParticipants")
+
+  minute           Minute?
+  documents        Document[]
+
+  university       University    @relation(fields: [university_id], references: [id])
+}
+
+model Minute {
+  id              String   @id @default(uuid())
+  meeting_id      String   @unique
+  summary         String?
+  discussions     Json?
+
+  workflow_status String      @default("draft")
+  visibility      Visibility  @default(private)
+
+  meeting Meeting @relation(fields: [meeting_id], references: [id])
+}
+
+model Document {
+  id         String @id @default(uuid())
+  filename   String
+  file_url   String
+  category   String
+
+  meeting_id String?
+  meeting    Meeting? @relation(fields: [meeting_id], references: [id])
+}
+
+model LoginLog {
+  id         String      @id @default(uuid())
+  user_id    String?
+  user       User?       @relation(fields: [user_id], references: [id])
+  email      String
+  ip_address String?
+  user_agent String?
+  status     LoginStatus
+  timestamp  DateTime    @default(now())
+}
+
+enum NotificationType {
+  INFO
+  SUCCESS
+  WARNING
+  ERROR
+}
+
+model Notification {
+  id        String         @id @default(uuid())
+  userId    String
+  user      User           @relation(fields: [userId], references: [id])
+  title     String
+  message   String
+  type      NotificationType @default(INFO)
+  isRead    Boolean        @default(false)
+  actionUrl String?
+  createdAt DateTime       @default(now())
+}
+
+model PasswordResetToken {
+  id      String   @id @default(uuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
