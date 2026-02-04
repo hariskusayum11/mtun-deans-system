@@ -15,6 +15,14 @@ const nextConfig = {
         protocol: "http",
         hostname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "ouch-cdn2.icons8.com",
+      },
+      {
+        protocol: "https",
+        hostname: "icons8.com",
+      },
     ],
   },
 };

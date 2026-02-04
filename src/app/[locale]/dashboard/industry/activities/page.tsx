@@ -24,12 +24,16 @@ const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 const db = globalForPrisma.prisma ?? new PrismaClient();
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = db;
 
-// Define a type that includes the company relation for Prisma query results
+/**
+ * Type helper: Prisma result includes company relation
+ */
 type IndustryActivityWithCompany = IndustryActivity & {
   company: Company;
 };
 
-// --- STAFF CRUD ---
+// -----------------------------
+// STAFF CRUD
+// -----------------------------
 
 export async function getStaff() {
   try {
@@ -39,13 +43,13 @@ export async function getStaff() {
     const user = session.user;
     const whereClause: any = {};
 
-    // Strict Isolation: Users must ONLY see data from their own university
+    // Strict isolation: non-super_admin see only own university
     if (user.role !== Role.super_admin) {
       if (!user.universityId) return [];
       whereClause.university_id = user.universityId;
     }
 
-    const staff = await db.staff.findMany({
+    return await db.staff.findMany({
       where: whereClause,
       include: {
         university: true,
@@ -53,8 +57,6 @@ export async function getStaff() {
       },
       orderBy: { name: "asc" },
     });
-
-    return staff;
   } catch (error) {
     console.error("Error fetching staff:", error);
     return [];
@@ -96,21 +98,23 @@ export async function createStaff(formData: FormData) {
     let universityIdToAssign: string;
 
     if (user.role === Role.super_admin) {
-      if (!validatedData.university_id)
+      if (!validatedData.university_id) {
         throw new Error("University is required for Super Admin.");
+      }
       universityIdToAssign = validatedData.university_id;
     } else {
-      if (!user.universityId)
+      if (!user.universityId) {
         throw new Error("User is not associated with a university.");
+      }
       universityIdToAssign = user.universityId;
     }
 
-    // Duplicate Check: Ensure email is unique
+    // Duplicate check: email unique (only if provided)
     if (validatedData.email) {
-      const existingStaff = await db.staff.findUnique({
+      const existing = await db.staff.findUnique({
         where: { email: validatedData.email },
       });
-      if (existingStaff) throw new Error("Staff with this email already exists.");
+      if (existing) throw new Error("Staff with this email already exists.");
     }
 
     await db.staff.create({
@@ -143,17 +147,14 @@ export async function deleteStaff(id: string) {
 
   const user = session.user;
 
-  const existingStaff = await db.staff.findUnique({
+  const existing = await db.staff.findUnique({
     where: { id },
     select: { university_id: true },
   });
 
-  if (!existingStaff) throw new Error("Staff not found.");
+  if (!existing) throw new Error("Staff not found.");
 
-  if (
-    user.role !== Role.super_admin &&
-    existingStaff.university_id !== user.universityId
-  ) {
+  if (user.role !== Role.super_admin && existing.university_id !== user.universityId) {
     throw new Error("You are not authorized to delete this staff member.");
   }
 
@@ -196,12 +197,14 @@ export async function updateStaff(id: string, formData: FormData) {
     let universityIdToAssign: string;
 
     if (user.role === Role.super_admin) {
-      if (!validatedData.university_id)
+      if (!validatedData.university_id) {
         throw new Error("University is required for Super Admin.");
+      }
       universityIdToAssign = validatedData.university_id;
     } else {
-      if (!user.universityId)
+      if (!user.universityId) {
         throw new Error("User is not associated with a university.");
+      }
       universityIdToAssign = user.universityId;
     }
 
@@ -230,7 +233,9 @@ export async function updateStaff(id: string, formData: FormData) {
   redirect("/dashboard/staff");
 }
 
-// --- COMPANY CRUD ---
+// -----------------------------
+// COMPANY CRUD
+// -----------------------------
 
 export async function getCompanies() {
   try {
@@ -245,7 +250,7 @@ export async function getCompanies() {
       whereClause.university_id = user.universityId;
     }
 
-    const companies = await db.company.findMany({
+    return await db.company.findMany({
       where: whereClause,
       include: {
         university: true,
@@ -253,8 +258,6 @@ export async function getCompanies() {
       },
       orderBy: { name: "asc" },
     });
-
-    return companies;
   } catch (error) {
     console.error("Error fetching companies:", error);
     return [];
@@ -296,12 +299,14 @@ export async function createCompany(formData: FormData) {
     let universityIdToAssign: string;
 
     if (user.role === Role.super_admin) {
-      if (!validatedData.university_id)
+      if (!validatedData.university_id) {
         throw new Error("University is required for Super Admin.");
+      }
       universityIdToAssign = validatedData.university_id;
     } else {
-      if (!user.universityId)
+      if (!user.universityId) {
         throw new Error("User is not associated with a university.");
+      }
       universityIdToAssign = user.universityId;
     }
 
@@ -335,17 +340,14 @@ export async function deleteCompany(id: string) {
 
   const user = session.user;
 
-  const existingCompany = await db.company.findUnique({
+  const existing = await db.company.findUnique({
     where: { id },
     select: { university_id: true },
   });
 
-  if (!existingCompany) throw new Error("Company not found.");
+  if (!existing) throw new Error("Company not found.");
 
-  if (
-    user.role !== Role.super_admin &&
-    existingCompany.university_id !== user.universityId
-  ) {
+  if (user.role !== Role.super_admin && existing.university_id !== user.universityId) {
     throw new Error("You are not authorized to delete this company.");
   }
 
@@ -393,12 +395,14 @@ export async function updateCompany(id: string, formData: FormData) {
     let universityIdToAssign: string;
 
     if (user.role === Role.super_admin) {
-      if (!validatedData.university_id)
+      if (!validatedData.university_id) {
         throw new Error("University is required for Super Admin.");
+      }
       universityIdToAssign = validatedData.university_id;
     } else {
-      if (!user.universityId)
+      if (!user.universityId) {
         throw new Error("User is not associated with a university.");
+      }
       universityIdToAssign = user.universityId;
     }
 
@@ -434,16 +438,21 @@ export async function getCompanyById(id: string) {
   });
 }
 
-// --- INDUSTRY ACTIVITY CRUD ---
+// -----------------------------
+// INDUSTRY ACTIVITY CRUD
+// -----------------------------
 
 export async function createIndustryActivity(formData: FormData) {
   const session = await auth();
   if (!session?.user) throw new Error("Not authenticated.");
-
   const user = session.user;
 
   const project_name = formData.get("project_name") as string;
   const date_str = formData.get("date") as string;
+
+  // ✅ รองรับ type (ถ้าไม่ส่งมา ใช้ default)
+  const type = (formData.get("type") as string) || "Activity";
+
   const status = formData.get("status") as string;
   const action = formData.get("action") as string;
   const pic_company = formData.get("pic_company") as string;
@@ -454,12 +463,13 @@ export async function createIndustryActivity(formData: FormData) {
     const validatedData = IndustryActivitySchema.parse({
       project_name,
       date: date_str,
+      type,
       status,
       action: action || undefined,
       pic_company,
       pic_university,
       company_id,
-      university_id: user.universityId, // assign from session
+      university_id: user.universityId,
     });
 
     const existingCompany = await db.company.findUnique({
@@ -480,6 +490,7 @@ export async function createIndustryActivity(formData: FormData) {
       data: {
         project_name: validatedData.project_name,
         date: new Date(validatedData.date),
+        type: validatedData.type ?? "Activity",
         status: validatedData.status,
         action: validatedData.action || null,
         pic_company: validatedData.pic_company,
@@ -490,6 +501,7 @@ export async function createIndustryActivity(formData: FormData) {
     });
 
     revalidatePath(`/dashboard/industry/${company_id}/activities`);
+    revalidatePath(`/dashboard/industry/activities`);
   } catch (error: any) {
     console.log("Error creating industry activity:", error);
     if (error instanceof z.ZodError) throw new Error(error.message);
@@ -502,11 +514,14 @@ export async function createIndustryActivity(formData: FormData) {
 export async function updateIndustryActivity(id: string, formData: FormData) {
   const session = await auth();
   if (!session?.user) throw new Error("Not authenticated.");
-
   const user = session.user;
 
   const project_name = formData.get("project_name") as string;
   const date_str = formData.get("date") as string;
+
+  // ✅ รองรับ type (ถ้าไม่ส่งมา ใช้ default)
+  const type = (formData.get("type") as string) || "Activity";
+
   const status = formData.get("status") as string;
   const action = formData.get("action") as string;
   const pic_company = formData.get("pic_company") as string;
@@ -517,6 +532,7 @@ export async function updateIndustryActivity(id: string, formData: FormData) {
     const validatedData = IndustryActivitySchema.parse({
       project_name,
       date: date_str,
+      type,
       status,
       action: action || undefined,
       pic_company,
@@ -544,6 +560,7 @@ export async function updateIndustryActivity(id: string, formData: FormData) {
       data: {
         project_name: validatedData.project_name,
         date: new Date(validatedData.date),
+        type: validatedData.type ?? "Activity",
         status: validatedData.status,
         action: validatedData.action || null,
         pic_company: validatedData.pic_company,
@@ -552,6 +569,7 @@ export async function updateIndustryActivity(id: string, formData: FormData) {
     });
 
     revalidatePath(`/dashboard/industry/${company_id}/activities`);
+    revalidatePath(`/dashboard/industry/activities`);
   } catch (error: any) {
     console.log("Error updating industry activity:", error);
     if (error instanceof z.ZodError) throw new Error(error.message);
@@ -567,23 +585,23 @@ export async function deleteIndustryActivity(id: string) {
 
   const user = session.user;
 
-  const existingActivity = await db.industryActivity.findUnique({
+  const existing = await db.industryActivity.findUnique({
     where: { id },
     select: { company: { select: { id: true, university_id: true } } },
   });
 
-  if (!existingActivity) throw new Error("Industry activity not found.");
+  if (!existing) throw new Error("Industry activity not found.");
 
   if (
     user.role !== Role.super_admin &&
-    existingActivity.company.university_id !== user.universityId
+    existing.company.university_id !== user.universityId
   ) {
     throw new Error("You are not authorized to delete this industry activity.");
   }
 
   await db.industryActivity.delete({ where: { id } });
 
-  revalidatePath(`/dashboard/industry/${existingActivity.company.id}/activities`);
+  revalidatePath(`/dashboard/industry/${existing.company.id}/activities`);
   revalidatePath(`/dashboard/industry/activities`);
 }
 
@@ -592,6 +610,10 @@ export async function deleteIndustryActivityAction(formData: FormData) {
   await deleteIndustryActivity(id);
 }
 
+/**
+ * ✅ Used by: /dashboard/industry/activities page
+ * Returns Activity[] shape expected by UI columns
+ */
 export async function getAllIndustryActivities() {
   try {
     const session = await auth();
@@ -618,8 +640,8 @@ export async function getAllIndustryActivities() {
       partner_type: "Company" as const,
       date: activity.date,
 
-      // ✅ ถ้า schema ยังไม่มี field type ให้ปิดไว้ก่อน
-      // type: activity.type,
+      // ✅ สำคัญ: page ใช้ a.type
+      type: activity.type,
 
       status: activity.status,
     }));
@@ -629,7 +651,9 @@ export async function getAllIndustryActivities() {
   }
 }
 
-// --- FACILITY CRUD ---
+// -----------------------------
+// FACILITY CRUD
+// -----------------------------
 
 export async function getFacilities() {
   try {
@@ -644,13 +668,11 @@ export async function getFacilities() {
       whereClause.university_id = user.universityId;
     }
 
-    const facilities = await db.facility.findMany({
+    return await db.facility.findMany({
       where: whereClause,
       include: { university: true },
       orderBy: { name: "asc" },
     });
-
-    return facilities;
   } catch (error) {
     console.error("Error fetching facilities:", error);
     return [];
@@ -660,7 +682,6 @@ export async function getFacilities() {
 export async function createFacility(formData: FormData) {
   const session = await auth();
   if (!session?.user) throw new Error("Not authenticated.");
-
   const user = session.user;
 
   const name = formData.get("name") as string;
@@ -684,12 +705,14 @@ export async function createFacility(formData: FormData) {
     let universityIdToAssign: string;
 
     if (user.role === Role.super_admin) {
-      if (!validatedData.university_id)
+      if (!validatedData.university_id) {
         throw new Error("University is required for Super Admin.");
+      }
       universityIdToAssign = validatedData.university_id;
     } else {
-      if (!user.universityId)
+      if (!user.universityId) {
         throw new Error("User is not associated with a university.");
+      }
       universityIdToAssign = user.universityId;
     }
 
@@ -719,17 +742,14 @@ export async function deleteFacility(id: string) {
 
   const user = session.user;
 
-  const existingFacility = await db.facility.findUnique({
+  const existing = await db.facility.findUnique({
     where: { id },
     select: { university_id: true },
   });
 
-  if (!existingFacility) throw new Error("Facility not found.");
+  if (!existing) throw new Error("Facility not found.");
 
-  if (
-    user.role !== Role.super_admin &&
-    existingFacility.university_id !== user.universityId
-  ) {
+  if (user.role !== Role.super_admin && existing.university_id !== user.universityId) {
     throw new Error("You are not authorized to delete this facility.");
   }
 
@@ -740,7 +760,6 @@ export async function deleteFacility(id: string) {
 export async function updateFacility(id: string, formData: FormData) {
   const session = await auth();
   if (!session?.user) throw new Error("Not authenticated.");
-
   const user = session.user;
 
   const name = formData.get("name") as string;
@@ -764,12 +783,14 @@ export async function updateFacility(id: string, formData: FormData) {
     let universityIdToAssign: string;
 
     if (user.role === Role.super_admin) {
-      if (!validatedData.university_id)
+      if (!validatedData.university_id) {
         throw new Error("University is required for Super Admin.");
+      }
       universityIdToAssign = validatedData.university_id;
     } else {
-      if (!user.universityId)
+      if (!user.universityId) {
         throw new Error("User is not associated with a university.");
+      }
       universityIdToAssign = user.universityId;
     }
 

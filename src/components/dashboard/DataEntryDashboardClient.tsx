@@ -4,8 +4,6 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import Image from "next/image";
-import Lottie from "lottie-react"; // Import Lottie
-import heroAnimation from "../../../public/animations/hero-animation.json"; // Import the animation JSON
 import {
   FileText,
   Clock,
@@ -18,6 +16,8 @@ import {
   CalendarDays,
   BellRing,
 } from "lucide-react";
+import Lottie from "lottie-react"; // Changed to lottie-react
+import animationData from "../../../public/animations/hero-animation.json"; // Import animation data
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -101,23 +101,23 @@ export default function DataEntryDashboardClient({
   return (
     <div className="min-h-screen bg-[#F6F8FC] p-6 space-y-8 w-full max-w-full">
 
-      {/* 1. Hero Section: Compact & Slim (V3 Design) */}
-      <div className="relative overflow-hidden rounded-3xl bg-white p-0 shadow-xl shadow-blue-900/5 border border-slate-100 min-h-[220px]"> {/* Added min-h */}
+      {/* 1. Hero Section: The "Wow" Factor */}
+      <div className="relative overflow-hidden rounded-3xl bg-white p-0 shadow-xl shadow-blue-900/5 border border-slate-100 min-h-[220px]">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-600 opacity-95"></div>
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 
-        <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between p-6 md:px-8 md:py-6"> {/* Adjusted padding */}
-          <div className="relative z-10 flex-1 space-y-3 text-center lg:text-left lg:max-w-[60%]"> {/* Added relative z-10 and lg:max-w-[60%] */}
+        <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between p-6 md:px-8 md:py-6">
+          <div className="relative z-10 flex-1 space-y-3 text-center lg:text-left lg:max-w-[60%]">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-blue-100 backdrop-blur-sm border border-white/10 mb-2">
                 <BellRing className="h-3 w-3" />
                 <span>{t("systemUpdatedNotification")}</span>
               </div>
-              <h1 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl"> {/* Adjusted text size */}
+              <h1 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
                 {t("welcome", { name: user.name })}
               </h1>
-              <p className="mt-2 text-sm text-blue-100/90 font-light max-w-xl"> {/* Adjusted text margin */}
+              <p className="mt-2 text-sm text-blue-100/90 font-light max-w-xl">
                 {t("heroDescription")}
               </p>
             </div>
@@ -144,12 +144,12 @@ export default function DataEntryDashboardClient({
           </div>
 
           {/* 🖼️ Illustration Section (Lottie Animation) */}
-          <div className="hidden lg:block absolute bottom-[-50px] right-4 w-[300px] h-[250px] lg:w-[380px] lg:h-[320px]"> {/* Adjusted bottom position further down */}
+          <div className="relative w-[250px] h-[200px] lg:w-[350px] lg:h-[280px] mt-6 lg:mt-0 flex items-center justify-center">
             <Lottie
-              animationData={heroAnimation}
-              loop={true}
-              autoplay={true}
-              className="w-full h-full"
+              loop
+              animationData={animationData}
+              autoplay // Use autoplay instead of play
+              style={{ width: '100%', height: '100%' }}
             />
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function DataEntryDashboardClient({
       </div>
 
       {/* 3. Main Content Layout: Grid 2 sections (Left table / Right Quick Info) */}
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-6 lg:grid-cols-3">
 
         {/* Left Section: Recent Submissions Table (takes 2/3 space) */}
         <div className="lg:col-span-2 space-y-6">
@@ -251,7 +251,7 @@ export default function DataEntryDashboardClient({
         {/* Right Section: Quick Widgets (takes 1/3 space) */}
         <div className="space-y-6">
 
-          {/* Calendar / Reminder Widget */}
+          {/* Upcoming Deadlines Widget */}
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
@@ -281,7 +281,7 @@ export default function DataEntryDashboardClient({
             </div>
           </div>
 
-          {/* Quick Tools (New Design) */}
+          {/* Quick Tools Widget */}
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <h3 className="mb-4 font-bold text-slate-800">{t("quickTools.title")}</h3>
             <div className="space-y-3">

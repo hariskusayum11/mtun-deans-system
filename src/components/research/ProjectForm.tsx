@@ -40,7 +40,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import SubmitButton from "@/components/form/SubmitButton";
 
-interface Partner {
+interface ExternalPartner {
   id: string;
   name: string;
 }
@@ -52,27 +52,26 @@ interface Staff {
 }
 
 interface ProjectFormProps {
-  staffList?: Staff[];
-  partnersList?: Partner[];
+  universityId: string;
+  staffList?: Staff[]; // For head researcher selection
+  externalPartnersList?: ExternalPartner[]; // For collaborators selection
   project?: {
     id: string;
     title: string;
     status: string | null;
     description: string | null;
     staff_id: string;
-    collaborators: Partner[];
+    collaborators: ExternalPartner[]; // Reverted to ExternalPartner[]
   };
   onSuccess?: () => void;
   setOpen?: (open: boolean) => void;
 }
 
-const ProjectForm = ({ staffList: initialStaffList = [], partnersList: initialPartnersList = [], project, onSuccess, setOpen }: ProjectFormProps) => {
+const ProjectForm = ({ universityId, staffList: initialStaffList = [], externalPartnersList: initialExternalPartnersList = [], project, onSuccess, setOpen }: ProjectFormProps) => {
   const t = useTranslations("Research.form");
-  const [partners, setPartners] = useState<{ label: string; value: string }[]>(
-    initialPartnersList.map((p) => ({ label: p.name, value: p.name }))
-  );
   const [staffList, setStaffList] = useState<Staff[]>(initialStaffList);
-  const [selectedPartners, setSelectedPartners] = useState<{ label: string; value: string }[]>(
+  const [externalPartners, setExternalPartners] = useState<ExternalPartner[]>(initialExternalPartnersList);
+  const [selectedCollaborators, setSelectedCollaborators] = useState<{ label: string; value: string }[]>(
     project?.collaborators.map((p) => ({ label: p.name, value: p.name })) || []
   );
   const [isLoading, setIsLoading] = useState(false);
@@ -83,14 +82,13 @@ const ProjectForm = ({ staffList: initialStaffList = [], partnersList: initialPa
   // Only fetch if lists are empty to prevent infinite loops
   useEffect(() => {
     const fetchData = async () => {
-      if (partners.length === 0) {
-        const data = await getExternalPartners();
-        setPartners(data.map((p: any) => ({ label: p.name, value: p.name })));
-      }
-      
       if (staffList.length === 0) {
         const staffData = await getStaff();
         setStaffList(staffData.map((s: any) => ({ id: s.id, name: s.name, image_url: s.image_url })));
+      }
+      if (externalPartners.length === 0) {
+        const partnersData = await getExternalPartners();
+        setExternalPartners(partnersData.map((p: any) => ({ id: p.id, name: p.name })));
       }
     };
     fetchData();
@@ -103,9 +101,10 @@ const ProjectForm = ({ staffList: initialStaffList = [], partnersList: initialPa
     setIsLoading(true);
     const formData = new FormData(event.currentTarget);
     formData.append(
-      "collaborators",
-      JSON.stringify(selectedPartners.map((p) => p.value))
+      "collaborators", // Reverted field name
+      JSON.stringify(selectedCollaborators.map((p) => p.value)) // Use selectedCollaborators
     );
+    formData.append("university_id", universityId); // Add university_id to formData
 
     try {
       const result = project 
@@ -120,8 +119,11 @@ const ProjectForm = ({ staffList: initialStaffList = [], partnersList: initialPa
           setOpen(false);
         } else if (onSuccess) {
           onSuccess();
+        } else {
+          // Redirect to the staff member's research page after successful submission
+          // The staff_id is available in project.staff_id for both create and edit scenarios
+          router.push(`/dashboard/staff/${project?.staff_id || formData.get("staff_id")}/research`);
         }
-        router.refresh();
       }
     } catch (error: any) {
       toast.error(t("toastError"));
@@ -136,7 +138,8 @@ const ProjectForm = ({ staffList: initialStaffList = [], partnersList: initialPa
     } else if (onSuccess) {
       onSuccess();
     } else {
-      router.push("/dashboard/research");
+      // Redirect to the staff member's research page on cancel
+      router.push(`/dashboard/staff/${project?.staff_id || (document.querySelector('[name="staff_id"]') as HTMLSelectElement)?.value}/research`);
     }
   };
 
@@ -226,14 +229,14 @@ const ProjectForm = ({ staffList: initialStaffList = [], partnersList: initialPa
               <div className="md:col-span-2 space-y-2">
                 <Label className="text-sm font-bold text-gray-700 ml-1 flex items-center gap-2">
                   <Users className="h-4 w-4 text-slate-400" />
-                  {t("fields.partners")}
+                  {t("fields.externalCollaborators")} {/* Changed label */}
                 </Label>
                 <CreatableSelect
                   isMulti
-                  options={partners}
-                  value={selectedPartners}
-                  onChange={(newValue) => setSelectedPartners(newValue as any)}
-                  placeholder={t("fields.partnersPlaceholder")}
+                  options={externalPartners.map(p => ({ label: p.name, value: p.name }))} // Use externalPartners for options
+                  value={selectedCollaborators}
+                  onChange={(newValue) => setSelectedCollaborators(newValue as any)}
+                  placeholder={t("fields.collaboratorsPlaceholder")}
                   className="text-sm"
                   styles={{
                     control: (base, state) => ({

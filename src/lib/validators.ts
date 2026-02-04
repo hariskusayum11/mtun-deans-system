@@ -55,7 +55,7 @@ export const StaffSchema = z.object({
 
 export const ResearchProjectSchema = z.object({
   title: z.string().min(3, "Project title must be at least 3 characters."),
-  collaborators: z.array(z.string()).optional().default([]),
+  collaborators: z.array(z.string()).optional().default([]), // Reverted to 'collaborators'
   status: z.string().optional().or(z.literal("")), // E.g., "Ongoing", "Completed"
   description: z.string().optional().or(z.literal("")),
   staff_id: z.string().min(1, "Staff ID is required."),
@@ -76,6 +76,7 @@ export const CompanySchema = z.object({
 export const IndustryActivitySchema = z.object({
   project_name: z.string().min(3, "Project name must be at least 3 characters."),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format."),
+  type: z.string().min(1, "Type is required."), // Added type field
   status: z.string().min(1, "Status is required."),
   action: z.string().optional().or(z.literal('')),
   pic_company: z.string().min(1, "Company PIC is required."),

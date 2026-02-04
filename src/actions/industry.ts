@@ -86,6 +86,27 @@ export async function createIndustryPartner(formData: FormData) {
   redirect("/dashboard/industry");
 }
 
+export async function getCompaniesListForSelect() {
+  try {
+    const companies = await db.company.findMany({
+      select: {
+        id: true,
+        name: true,
+      },
+      orderBy: {
+        name: 'asc',
+      },
+    });
+    return companies;
+  } catch (error: any) {
+    console.error("Error fetching companies for select:", error);
+    throw new Error(error.message || "Failed to fetch companies for select.");
+  }
+}
+
+
+
+
 export async function updateIndustryPartner(id: string, formData: FormData) {
   const session = await auth();
   if (!session?.user) {

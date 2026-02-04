@@ -44,7 +44,7 @@ export async function getResearchProjects() {
             image_url: true,
           },
         },
-        collaborators: {
+        collaborators: { // Reverted to collaborators
           select: {
             id: true,
             name: true,
@@ -73,18 +73,18 @@ export async function createResearchProject(formData: FormData): Promise<{ succe
     const user = session.user;
 
     const title = formData.get("title") as string;
-    const collaboratorsJson = formData.get("collaborators") as string;
+    const collaboratorsJson = formData.get("collaborators") as string; // Reverted field name
     const status = formData.get("status") as string;
     const description = formData.get("description") as string;
     const staff_id = formData.get("staff_id") as string;
 
     const parsedCollaborators = JSON.parse(
       collaboratorsJson || "[]"
-    ) as string[];
+    ) as string[]; // Parse as array of names
     
     const validatedData = ResearchProjectSchema.parse({
       title,
-      collaborators: parsedCollaborators,
+      collaborators: parsedCollaborators, // Reverted to collaborators
       status: status || undefined,
       description: description || undefined,
       staff_id,
@@ -113,7 +113,7 @@ export async function createResearchProject(formData: FormData): Promise<{ succe
         status: validatedData.status || "Ongoing",
         description: validatedData.description || null,
         staff_id: validatedData.staff_id,
-        collaborators: {
+        collaborators: { // Reverted to collaborators
           connectOrCreate: validatedData.collaborators.map((name) => {
             const formattedName = toTitleCase(name.trim());
             return {
@@ -146,7 +146,7 @@ export async function createResearchProject(formData: FormData): Promise<{ succe
       }
     }
     
-    revalidatePath(`/dashboard/staff/${staff_id}/projects`);
+    revalidatePath(`/dashboard/staff/${staff_id}/research`); // Changed path
     revalidatePath("/dashboard/research");
     return { success: "Project created successfully." };
   } catch (error: any) {
@@ -168,18 +168,18 @@ export async function updateResearchProject(id: string, formData: FormData): Pro
     const user = session.user;
 
     const title = formData.get("title") as string;
-    const collaboratorsJson = formData.get("collaborators") as string;
+    const collaboratorsJson = formData.get("collaborators") as string; // Reverted field name
     const status = formData.get("status") as string;
     const description = formData.get("description") as string;
     const staff_id = formData.get("staff_id") as string;
 
     const parsedCollaborators = JSON.parse(
       collaboratorsJson || "[]"
-    ) as string[];
+    ) as string[]; // Parse as array of names
     
     const validatedData = ResearchProjectSchema.parse({
       title,
-      collaborators: parsedCollaborators,
+      collaborators: parsedCollaborators, // Reverted to collaborators
       status: status || undefined,
       description: description || undefined,
       staff_id,
@@ -187,7 +187,7 @@ export async function updateResearchProject(id: string, formData: FormData): Pro
 
     const existingProject = await db.researchProject.findUnique({
       where: { id },
-      include: { staff: true },
+      include: { staff: true, collaborators: true }, // Reverted to collaborators
     });
 
     if (!existingProject) {
@@ -201,6 +201,17 @@ export async function updateResearchProject(id: string, formData: FormData): Pro
       return { error: "You are not authorized to update this research project." };
     }
 
+    // Disconnect old collaborators
+    const disconnectOperations = existingProject.collaborators.map(partner => ({ id: partner.id }));
+    // Connect new collaborators
+    const connectOrCreateOperations = parsedCollaborators.map((name) => {
+      const formattedName = toTitleCase(name.trim());
+      return {
+        where: { name: formattedName },
+        create: { name: formattedName },
+      };
+    });
+
     await db.researchProject.update({
       where: { id },
       data: {
@@ -209,19 +220,13 @@ export async function updateResearchProject(id: string, formData: FormData): Pro
         description: validatedData.description || null,
         staff_id: validatedData.staff_id,
         collaborators: {
-          set: [], // Clear existing
-          connectOrCreate: validatedData.collaborators.map((name) => {
-            const formattedName = toTitleCase(name.trim());
-            return {
-              where: { name: formattedName },
-              create: { name: formattedName },
-            };
-          }),
+          disconnect: disconnectOperations,
+          connectOrCreate: connectOrCreateOperations,
         },
       },
     });
     
-    revalidatePath(`/dashboard/staff/${staff_id}/projects`);
+    revalidatePath(`/dashboard/staff/${staff_id}/research`); // Changed path
     revalidatePath("/dashboard/research");
     return { success: "Project updated successfully." };
   } catch (error: any) {
@@ -256,6 +261,54 @@ export async function deleteResearchProject(id: string) {
   }
 
   await db.researchProject.delete({ where: { id } });
-  revalidatePath(`/dashboard/staff/${existingProject.staff.id}/projects`);
+  revalidatePath(`/dashboard/staff/${existingProject.staff.id}/research`); // Changed path
   revalidatePath("/dashboard/research");
+}
+
+export async function getResearchProjectsByStaffId(staffId: string) {
+  try {
+    const session = await auth();
+    if (!session?.user) {
+      throw new Error("Unauthorized");
+    }
+
+    const user = session.user;
+    let whereClause: any = {
+      staff_id: staffId,
+    };
+
+    // Strict Isolation: Users must ONLY see data from their own university
+    if (user.role !== Role.super_admin) {
+      if (!user.universityId) return [];
+      whereClause.staff = {
+        university_id: user.universityId,
+      };
+    }
+
+    const projects = await db.researchProject.findMany({
+      where: whereClause,
+      include: {
+        staff: {
+          select: {
+            name: true,
+            image_url: true,
+          },
+        },
+        collaborators: { // Reverted to collaborators
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+      orderBy: {
+        updated_at: "desc",
+      },
+    });
+
+    return projects;
+  } catch (error) {
+    console.error("Error fetching research projects by staff ID:", error);
+    return [];
+  }
 }

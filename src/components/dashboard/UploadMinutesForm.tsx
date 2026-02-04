@@ -56,38 +56,26 @@ const TiptapEditor = ({ content, onChange, placeholder }: TiptapEditorProps) => 
   }
 
   return (
-    <div className="border border-gray-300 rounded-md">
-      <div className="flex items-center space-x-1 p-2 border-b border-gray-200 bg-gray-50 rounded-t-md">
-        <button
-          type="button"
-          onClick={() => editor.chain().focus().toggleBold().run()}
-          disabled={!editor.can().chain().focus().toggleBold().run()}
-          className={cn("p-1 rounded", editor.isActive("bold") ? "bg-blue-200" : "hover:bg-gray-200")}
-        >
-          <Bold className="h-4 w-4" />
-        </button>
-        <button
-          type="button"
-          onClick={() => editor.chain().focus().toggleItalic().run()}
-          disabled={!editor.can().chain().focus().toggleItalic().run()}
-          className={cn("p-1 rounded", editor.isActive("italic") ? "bg-blue-200" : "hover:bg-gray-200")}
-        >
-          <Italic className="h-4 w-4" />
-        </button>
-        <button
-          type="button"
-          onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={cn("p-1 rounded", editor.isActive("bulletList") ? "bg-blue-200" : "hover:bg-gray-200")}
-        >
-          <List className="h-4 w-4" />
-        </button>
-        <button
-          type="button"
-          onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={cn("p-1 rounded", editor.isActive("orderedList") ? "bg-blue-200" : "hover:bg-gray-200")}
-        >
-          <ListOrdered className="h-4 w-4" />
-        </button>
+    <div className="border border-slate-200 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all bg-white">
+      <div className="flex items-center gap-1 p-2 border-b border-slate-100 bg-slate-50/50">
+        {[
+          { icon: Bold, action: () => editor.chain().focus().toggleBold().run(), active: 'bold' },
+          { icon: Italic, action: () => editor.chain().focus().toggleItalic().run(), active: 'italic' },
+          { icon: List, action: () => editor.chain().focus().toggleBulletList().run(), active: 'bulletList' },
+          { icon: ListOrdered, action: () => editor.chain().focus().toggleOrderedList().run(), active: 'orderedList' },
+        ].map((btn, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={btn.action}
+            className={cn(
+              "p-1.5 rounded-lg transition-colors", 
+              editor.isActive(btn.active) ? "bg-blue-100 text-blue-600" : "hover:bg-slate-200 text-slate-500"
+            )}
+          >
+            <btn.icon className="h-4 w-4" />
+          </button>
+        ))}
       </div>
       <EditorContent editor={editor} />
     </div>
@@ -171,77 +159,82 @@ export default function UploadMinutesForm({ meetingId }: UploadMinutesFormProps)
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-        <FileText className="h-6 w-6 mr-3 text-blue-500" /> {t("title")}
-      </h2>
+    <div className="bg-white shadow-lg rounded-xl overflow-hidden"> {/* Main Card, remove padding here */}
+      {/* Header (inside card, but outside scrollable form content) */}
+      <div className="p-8 border-b border-gray-100"> {/* Add padding and border-b */}
+        <h2 className="text-2xl font-bold text-gray-800 flex items-center">
+          <FileText className="h-6 w-6 mr-3 text-blue-500" /> {t("title")}
+        </h2>
+      </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {/* Minutes Summary Rich Text Editor */}
-        <div>
-          <label htmlFor="minutesSummary" className="block text-sm font-bold text-gray-700 mb-2">
-            {t("fields.summary")}
-          </label>
-          <Controller
-            name="minutesSummary"
-            control={control}
-            render={({ field }) => (
-              <TiptapEditor
-                content={field.value || ""}
-                onChange={field.onChange}
-                placeholder={t("fields.summaryPlaceholder")}
-              />
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col h-full">
+        <div className="p-8 space-y-6 flex-grow overflow-y-auto max-h-[calc(100vh-200px)]"> {/* Scrollable content */}
+          {/* Minutes Summary Rich Text Editor */}
+          <div>
+            <label htmlFor="minutesSummary" className="block text-sm font-bold text-gray-700 mb-2">
+              {t("fields.summary")}
+            </label>
+            <Controller
+              name="minutesSummary"
+              control={control}
+              render={({ field }) => (
+                <TiptapEditor
+                  content={field.value || ""}
+                  onChange={field.onChange}
+                  placeholder={t("fields.summaryPlaceholder")}
+                />
+              )}
+            />
+            {errors.minutesSummary && (
+              <p className="mt-2 text-sm text-red-600">{errors.minutesSummary.message}</p>
             )}
-          />
-          {errors.minutesSummary && (
-            <p className="mt-2 text-sm text-red-600">{errors.minutesSummary.message}</p>
+          </div>
+
+          {/* File Upload */}
+          <div>
+            <label className="block text-sm font-bold text-gray-700 mb-2">
+              {t("fields.file")}
+            </label>
+            <div
+              {...getRootProps()}
+              className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors duration-300"
+            >
+              <input {...getInputProps()} />
+              <Paperclip className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+              <p className="text-gray-600">{t("fields.filePlaceholder")}</p>
+              <p className="text-xs text-gray-500 mt-1">{t("fields.fileSubtitle")}</p>
+            </div>
+            <aside className="mt-4">
+              {files.length > 0 && (
+                <h4 className="text-sm font-semibold text-gray-700 mb-2">{t("fields.selectedFile")}</h4>
+              )}
+              <ul className="space-y-2">
+                {files.map((file) => (
+                  <li key={file.name} className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
+                    <span className="text-gray-700 text-sm">{file.name}</span>
+                    <button
+                      type="button"
+                      onClick={handleRemoveFileClick}
+                      className="text-red-500 hover:text-red-700 ml-4"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+
+          {/* Form Error */}
+          {formError && (
+            <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">
+              {formError}
+            </div>
           )}
         </div>
 
-        {/* File Upload */}
-        <div>
-          <label className="block text-sm font-bold text-gray-700 mb-2">
-            {t("fields.file")}
-          </label>
-          <div
-            {...getRootProps()}
-            className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors duration-300"
-          >
-            <input {...getInputProps()} />
-            <Paperclip className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-            <p className="text-gray-600">{t("fields.filePlaceholder")}</p>
-            <p className="text-xs text-gray-500 mt-1">{t("fields.fileSubtitle")}</p>
-          </div>
-          <aside className="mt-4">
-            {files.length > 0 && (
-              <h4 className="text-sm font-semibold text-gray-700 mb-2">{t("fields.selectedFile")}</h4>
-            )}
-            <ul className="space-y-2">
-              {files.map((file) => (
-                <li key={file.name} className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
-                  <span className="text-gray-700 text-sm">{file.name}</span>
-                  <button
-                    type="button"
-                    onClick={handleRemoveFileClick}
-                    className="text-red-500 hover:text-red-700 ml-4"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </aside>
-        </div>
-
-        {/* Form Error */}
-        {formError && (
-          <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">
-            {formError}
-          </div>
-        )}
-
         {/* Submit Button */}
-        <div className="flex justify-end">
+        <div className="flex justify-end p-8 border-t border-gray-100 bg-gray-50/30"> {/* Add padding, border-t, and background */}
           <SubmitButton label={t("actions.submit")} className="px-6 py-3 text-base bg-blue-600 hover:bg-blue-700" />
         </div>
       </form>

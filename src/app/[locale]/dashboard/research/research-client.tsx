@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { PlusCircle, Search, Filter, Edit, Trash2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
 import { columns } from "./columns";
@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/dialog";
 import ProjectForm from "@/components/research/ProjectForm";
 import { Role } from "@prisma/client";
+import { Input } from "@/components/ui/input";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { useTranslations } from "next-intl";
 
 interface ResearchClientProps {
   projects: any[];
@@ -22,45 +25,64 @@ interface ResearchClientProps {
 
 export default function ResearchClient({ projects, staffList, partners, userRole }: ResearchClientProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const t = useTranslations("Dashboard.research");
+  const tCommon = useTranslations("Common");
+
+  // Mock filter options for status
+  const statusFilterOptions = [
+    { label: "All Status", value: "all" },
+    { label: "Ongoing", value: "Ongoing" },
+    { label: "Completed", value: "Completed" },
+    { label: "Pending", value: "Pending" },
+  ];
+
+  // Filter projects based on search term
+  const filteredProjects = projects.filter(
+    (project: any) =>
+      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.staff?.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="space-y-6 md:space-y-8">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
-            Research Projects
-          </h1>
-          <p className="text-sm md:text-base text-gray-500 mt-1 font-medium">
-            Monitor and manage all university research projects.
-          </p>
+    <>
+      {/* Header Section (Toolbar): Search Input and Dropdown Filters */}
+      <div className="flex items-center justify-between border-b border-slate-100 p-4">
+        <div className="relative w-full max-w-sm">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Input
+            type="text"
+            placeholder="Search projects..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-9 rounded-xl border-slate-200 focus-visible:ring-blue-200"
+          />
         </div>
-
-        {(userRole === Role.super_admin || userRole === Role.data_entry) && (
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-              <Button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-6 rounded-2xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95 gap-2">
-                <Plus className="h-5 w-5" />
-                Add Project
+        <div className="flex items-center gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="flex items-center gap-2 rounded-xl border-slate-200 text-slate-600 hover:bg-slate-50">
+                <Filter className="h-4 w-4" />
+                {tCommon("filters")}
               </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[600px] w-[95vw] rounded-[2rem] p-0 overflow-hidden border-none [&>button]:hidden">
-              <ProjectForm staffList={staffList} partnersList={partners} setOpen={setIsOpen} />
-            </DialogContent>
-          </Dialog>
-        )}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-[200px]">
+              {statusFilterOptions.map((option) => (
+                <DropdownMenuItem key={option.value}>{option.label}</DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
 
-      <DataTable
-        columns={columns}
-        data={projects}
-        searchColumn="title"
-        searchPlaceholder="Search projects or researchers..."
-        filterColumn="status"
-        filterOptions={[
-          { label: "Ongoing", value: "Ongoing" },
-          { label: "Completed", value: "Completed" },
-        ]}
-      />
-    </div>
+      {/* Body Section (Table) */}
+      <div className="p-0 overflow-x-auto">
+        <DataTable
+          columns={columns}
+          data={filteredProjects}
+          // Removed searchColumn and filterColumn props as they are now handled manually
+        />
+      </div>
+    </>
   );
 }

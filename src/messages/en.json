@@ -106,6 +106,7 @@
       "facilities": "Facilities",
       "news": "News",
       "minutes": "Minutes",
+      "activities": "Activities",
       "signOut": "Sign Out",
       "systemName": "Deans' System"
     },
@@ -114,6 +115,7 @@
     "notifications": "Notifications"
   },
   "Common": {
+    "filters": "Filters",
     "confirm": "Confirm",
     "cancel": "Cancel",
     "logoutTitle": "Confirm Logout",

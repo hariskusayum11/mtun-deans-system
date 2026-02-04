@@ -212,8 +212,8 @@ const IndustryForm = ({
                     {previewUrl ? (
                       <img src={previewUrl} alt="Preview" className="h-full w-full object-cover" />
                     ) : (
-                      <Building2 className="h-8 w-8 text-gray-300" />
-                    )}
+                        <Building2 className="h-8 w-8 text-gray-300" />
+                      )}
                   </div>
                   <div className="flex-1">
                     <input

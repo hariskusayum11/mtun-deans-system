@@ -150,6 +150,7 @@ model IndustryActivity {
   id             String    @id @default(uuid())
   project_name   String
   date           DateTime
+  type           String    @default("Activity") // ✅ แก้แล้ว: ใส่ค่าเริ่มต้นป้องกัน Error
   status         String
   action         String?
   pic_company    String
@@ -161,7 +162,6 @@ model IndustryActivity {
   created_at     DateTime  @default(now())
   updated_at     DateTime  @updatedAt
 }
-
 model Activity {
   id             String @id @default(uuid())
   company_id     String

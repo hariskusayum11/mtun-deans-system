@@ -53,14 +53,14 @@ const UniversityForm = ({
   });
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4 md:p-0">
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-        {/* Header */}
-        <div className="px-6 md:px-8 py-4 md:py-6 border-b border-gray-100 bg-gray-50/30">
-          <h1 className="text-lg md:text-xl font-bold text-gray-900">{title}</h1>
-          <p className="text-xs md:text-sm text-gray-500 mt-1">{description}</p>
-        </div>
+    <div className="w-full max-w-2xl mx-auto space-y-4 p-4 md:p-0">
+      {/* Header (Outside Card) */}
+      <div className="space-y-1">
+        <h2 className="text-2xl font-bold tracking-tight text-slate-800">{title}</h2>
+        <p className="text-muted-foreground text-sm">{description}</p>
+      </div>
 
+      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 md:p-8 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -151,7 +151,7 @@ const UniversityForm = ({
           )}
 
           {/* Actions */}
-          <div className="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 border-t border-gray-100">
+          <div className="flex flex-col sm:flex-row items-center justify-end gap-3 p-6 md:p-8 border-t border-gray-100 bg-gray-50/30"> {/* Moved actions outside scrollable area */}
             <Link
               href="/dashboard/universities"
               className="w-full sm:w-auto text-center px-6 py-2.5 rounded-xl text-sm font-bold text-gray-500 hover:bg-gray-100 transition-all"

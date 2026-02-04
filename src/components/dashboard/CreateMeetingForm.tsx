@@ -194,14 +194,14 @@ export default function CreateMeetingForm({ staffList, universityId, availableDe
 
   return (
     <div className="p-4 space-y-4"> {/* Main Layout Wrapper */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"> {/* White Card Wrapper */}
-        {/* Header */}
-        <div className="p-6 border-b border-slate-100">
-          <h1 className="text-2xl font-bold text-slate-900">{t("title")}</h1>
-          <p className="text-sm text-muted-foreground mt-1">{t("description")}</p>
-        </div>
+      {/* Header (Outside Card) */}
+      <div className="space-y-1">
+        <h2 className="text-2xl font-bold tracking-tight text-slate-800">{t("title")}</h2>
+        <p className="text-muted-foreground text-sm">{t("description")}</p>
+      </div>
 
-        <form id="create-meeting-form" onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6"> {/* Form with internal padding and spacing */}
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm"> {/* White Card Wrapper, removed overflow-hidden */}
+        <form id="create-meeting-form" onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6"> {/* Form with internal padding and spacing, removed flex flex-col h-full and internal scroll */}
           {/* Section 1: Basic Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-blue-600">
@@ -418,7 +418,7 @@ export default function CreateMeetingForm({ staffList, universityId, availableDe
           </div>
 
           {/* Form Footer with Actions */}
-          <div className="mt-8 pt-6 border-t border-slate-100 flex justify-end gap-4">
+          <div className="mt-8 pt-6 border-t border-slate-100 flex justify-end gap-4"> {/* Reverted actions to be part of the form flow */}
             <Link href="/dashboard/meetings" className="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-all">
               {t("actions.cancel")}
             </Link>

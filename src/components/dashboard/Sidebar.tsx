@@ -20,6 +20,7 @@ import {
   ChevronRight,
   FileClock,
   FileText,
+  Handshake, // Added for Industry Activities
 } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -48,14 +49,14 @@ const MENU_ITEMS: MenuItem[] = [
   { labelKey: "approvals", href: "/dashboard/approvals", icon: ClipboardCheck, allowedRoles: [Role.dean], group: "main" },
   { labelKey: "myUniversity", href: "/dashboard/my-university", icon: University, allowedRoles: [Role.dean], group: "main" },
   { labelKey: "reports", href: "/dashboard/reports", icon: Newspaper, allowedRoles: [Role.dean], group: "main" },
-  
+
   // Data Entry / Management Group
   { labelKey: "meetings", href: "/dashboard/meetings", icon: Calendar, allowedRoles: [Role.dean, Role.data_entry], group: "main" },
-    { labelKey: "minutes", href: "/dashboard/minutes", icon: FileText, allowedRoles: [Role.super_admin, Role.dean, Role.data_entry], group: "main" },
-
+  { labelKey: "minutes", href: "/dashboard/minutes", icon: FileText, allowedRoles: [Role.super_admin, Role.dean, Role.data_entry], group: "main" },
   { labelKey: "staff", href: "/dashboard/staff", icon: Users, allowedRoles: [Role.data_entry], group: "main" },
   { labelKey: "research", href: "/dashboard/research", icon: FlaskConical, allowedRoles: [Role.data_entry], group: "main" },
   { labelKey: "industry", href: "/dashboard/industry", icon: Briefcase, allowedRoles: [Role.data_entry], group: "main" },
+  { labelKey: "activities", href: "/dashboard/industry/activities", icon: Handshake, allowedRoles: [Role.data_entry], group: "main" }, // Ensure this link is correct
   { labelKey: "facilities", href: "/dashboard/facilities", icon: Building, allowedRoles: [Role.data_entry], group: "main" },
   // { labelKey: "news", href: "/dashboard/news", icon: Newspaper, allowedRoles: [Role.data_entry], group: "main" },
 
@@ -94,8 +95,8 @@ export default function Sidebar({ user }: SidebarProps) {
                   href={item.href}
                   className={cn(
                     "flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 group",
-                    isActive 
-                      ? "relative before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:bg-blue-500 before:rounded-r-lg bg-white/5 text-white" 
+                    isActive
+                      ? "relative before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:bg-blue-500 before:rounded-r-lg bg-white/5 text-white"
                       : "text-white/60 hover:bg-white/5 hover:text-white"
                   )}
                 >
@@ -121,13 +122,13 @@ export default function Sidebar({ user }: SidebarProps) {
       <div className="p-8 mb-2">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-xl flex items-center justify-center border border-white/10 shadow-inner">
-            <Image 
-              src="https://i0.wp.com/itex.com.my/wp-content/uploads/2023/03/ITEX23-MTUN-LOGO.png?w=879&ssl=1" 
-              alt="MTUN Logo" 
-              width={24} 
-              height={24} 
+            <Image
+              src="https://i0.wp.com/itex.com.my/wp-content/uploads/2023/03/ITEX23-MTUN-LOGO.png?w=879&ssl=1"
+              alt="MTUN Logo"
+              width={24}
+              height={24}
               style={{ objectFit: 'contain' }}
-              className="brightness-0 invert" 
+              className="brightness-0 invert"
             />
           </div>
           <div className="flex flex-col">
@@ -147,14 +148,14 @@ export default function Sidebar({ user }: SidebarProps) {
       {/* User Profile & Logout Section */}
       <div className="p-4 mt-auto">
         <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-4 border border-white/5 shadow-inner">
-          <Link 
+          <Link
             href="/dashboard/profile"
             className="flex items-center gap-3 mb-4 group cursor-pointer"
           >
             <div className="relative">
-              <img 
-                src={avatarUrl} 
-                alt={user.name || "User"} 
+              <img
+                src={avatarUrl}
+                alt={user.name || "User"}
                 className="w-10 h-10 rounded-xl object-cover border border-white/10 group-hover:border-blue-500 transition-colors"
               />
               <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a1128]" />
@@ -168,7 +169,7 @@ export default function Sidebar({ user }: SidebarProps) {
               </span>
             </div>
           </Link>
-          
+
           <button
             onClick={() => setIsLogoutModalOpen(true)}
             suppressHydrationWarning
@@ -178,7 +179,7 @@ export default function Sidebar({ user }: SidebarProps) {
             {t("signOut")}
           </button>
         </div>
-        
+
         <div className="mt-4 text-[10px] font-medium text-white/20 text-center uppercase tracking-widest">
           &copy; {new Date().getFullYear()} MTUN Deans' System
         </div>
